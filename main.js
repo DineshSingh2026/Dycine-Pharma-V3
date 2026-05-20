@@ -708,3 +708,50 @@ function initScrollVectors() {
 window.addEventListener('load', () => {
   setTimeout(initScrollVectors, 300);
 });
+
+/* =========================
+   About-section tab swap (Global / Mission & Vision / Our Team)
+   Horizontal slide + fade between panels, animated container height
+   ========================= */
+(() => {
+  const container = document.querySelector('.about-tab-container');
+  const tabs      = document.querySelectorAll('.about-tab[data-tab]');
+  const panels    = document.querySelectorAll('.about-panel[data-panel]');
+  if (!container || !tabs.length || !panels.length) return;
+
+  let busy = false;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.tab;
+      if (busy || tab.classList.contains('is-active')) return;
+
+      const next = document.querySelector(`.about-panel[data-panel="${key}"]`);
+      const cur  = document.querySelector('.about-panel.is-active');
+      if (!next || !cur || next === cur) return;
+
+      busy = true;
+      tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+
+      // Lock container at current height before the swap
+      const startH = container.offsetHeight;
+      container.style.height = startH + 'px';
+
+      // Swap classes (next becomes position:relative; old leaves)
+      cur.classList.remove('is-active');
+      cur.classList.add('is-leaving');
+      next.classList.add('is-active');
+
+      // Force reflow, then animate to new content height
+      // eslint-disable-next-line no-unused-expressions
+      container.offsetHeight;
+      const endH = next.offsetHeight;
+      container.style.height = endH + 'px';
+
+      setTimeout(() => {
+        cur.classList.remove('is-leaving');
+        container.style.height = '';
+        busy = false;
+      }, 550);
+    });
+  });
+})();
