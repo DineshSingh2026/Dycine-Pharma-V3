@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120">
+  <defs>
+    <mask id="cut">
+      <rect x="0" y="0" width="360" height="120" fill="white"></rect>
+      <text x="95" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="28" letter-spacing="-0.5" fill="black">Dycine</text>
+    </mask>
+  </defs>
+  <rect x="20" y="20" width="150" height="44" fill="currentColor" mask="url(#cut)"></rect>
+  <rect x="170" y="20" width="170" height="44" fill="none" stroke="currentColor" stroke-width="2"></rect>
+  <text x="255" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="28" letter-spacing="-0.5" fill="currentColor">Pharma</text>
+  <text x="180" y="100" text-anchor="middle" font-family="&#39;Dancing Script&#39;,&#39;Brush Script MT&#39;,cursive" font-style="italic" font-weight="600" font-size="22" fill="currentColor">We care for life...</text>
+</svg>
