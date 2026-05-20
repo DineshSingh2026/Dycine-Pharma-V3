@@ -10,3 +10,7 @@ desktop.ini
 
 # Local working folder
 scrap/
+
+# Node
+node_modules/
+package-lock.json
