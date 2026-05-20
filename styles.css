@@ -586,7 +586,7 @@ section {
   max-width: 1100px;
   aspect-ratio: 1 / 1;
   object-fit: contain;
-  filter: drop-shadow(0 24px 80px rgba(0,180,216,0.45));
+  filter: drop-shadow(0 24px 80px rgba(0,180,216,0.45)) contrast(1.14) saturate(1.12) brightness(1.05);
 }
 
 /* meta strip at bottom of hero */
@@ -876,7 +876,7 @@ section {
 .mv-video-wrap video {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 18px 48px rgba(0,180,216,0.28)) drop-shadow(0 4px 16px rgba(2,62,138,0.18));
+  filter: drop-shadow(0 18px 48px rgba(0,180,216,0.28)) drop-shadow(0 4px 16px rgba(2,62,138,0.18)) contrast(1.18) saturate(1.15) brightness(1.06);
 }
 @media (max-width: 820px) {
   .mv-video-wrap { transform: rotate(-25deg); }
@@ -906,7 +906,12 @@ section {
   z-index: 1;
 }
 
-.team-member { text-align: center; }
+.team-member {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .team-img-wrap {
   width: 170px;
@@ -950,7 +955,7 @@ section {
   justify-content: center;
   width: 30px;
   height: 30px;
-  margin-top: 12px;
+  margin-top: auto;
   border-radius: 6px;
   background: rgba(0,180,216,0.08);
   color: var(--navy-700);
@@ -1057,6 +1062,25 @@ section {
   .team-connections { display: none; }
   .about-tabs-row { flex-wrap: wrap; gap: 8px; padding-top: 32px; }
   .about-tab { padding: 10px 18px; font-size: 12px; }
+
+  /* Product tabs: horizontally scrollable with hidden scrollbar */
+  .product-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 16px 4px;
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .product-tabs::-webkit-scrollbar { display: none; }
+  .product-tab {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    padding: 9px 16px;
+    font-size: 12px;
+  }
 }
 @media (max-width: 480px) {
   .about-tab i { display: none; }
@@ -1166,6 +1190,7 @@ section {
 video.img {
   width: 100%; height: 100%;
   object-fit: cover;
+  filter: contrast(1.12) saturate(1.15) brightness(1.05);
 }
 .slide.is-active .img { animation: slowZoom 12s linear forwards; }
 @keyframes slowZoom { from { transform: scale(1.08); } to { transform: scale(1.18); } }
@@ -1316,6 +1341,11 @@ video.img {
 }
 
 /* Explore Full Catalogue button */
+.catalogue-btn-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0 16px;
+}
 .catalogue-btn {
   display: inline-flex;
   align-items: center;
@@ -1718,16 +1748,27 @@ video.img {
     width: 100%;
     max-width: none;
     height: 100%;
-    opacity: 0.35;
+    opacity: 0.7;
     z-index: 1;
   }
   .hero-inner { z-index: 3; padding: 80px 0 48px; }
   .hero-meta-strip { z-index: 3; padding: 12px 0 16px; }
   .hero { min-height: auto; }
-  .hero-video { width: 120%; max-width: 600px; }
+  .hero-video {
+    width: 140%;
+    max-width: 700px;
+    filter: drop-shadow(0 24px 80px rgba(0,180,216,0.55)) contrast(1.18) brightness(1.12) saturate(1.1);
+  }
   .products-head { flex-direction: column; align-items: flex-start; }
-  .product-stage { min-height: 420px; }
+  .product-stage { min-height: 560px; }
+  .slide .copy { bottom: 24px; left: 24px; right: 24px; }
+  .slide .num { font-size: 34px; margin-bottom: 8px; }
+  .slide h3 { font-size: clamp(22px, 5.5vw, 32px); margin-bottom: 12px; }
+  .slide .desc { font-size: 14px; margin-bottom: 18px; }
+  .slide .specs { gap: 18px; }
   .carousel-controls { gap: 16px; margin-top: 28px; }
+  .catalogue-btn-wrap { padding: 22px 0 4px; }
+  .products { padding-bottom: 56px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .sidenav { gap: 16px; }
   .sn-label { display: none; }
@@ -1738,6 +1779,33 @@ video.img {
 }
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-top: 22px;
+    margin-top: 36px;
+  }
+  .hero-stats .s { text-align: left; }
+  .hero-stats .s .num { font-size: 26px; }
+  .hero-stats .s .lbl { font-size: 9.5px; letter-spacing: 0.1em; line-height: 1.35; margin-top: 6px; }
+  .hero-stats .s .lbl i { font-size: 12px; margin-right: 3px; }
+
+  /* Product tabs: stack vertically so every full name is visible */
+  .product-tabs {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    gap: 8px;
+  }
+  .product-tab {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 16px;
+    font-size: 13px;
+  }
 }
 

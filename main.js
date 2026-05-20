@@ -429,6 +429,13 @@ function setSlide(i) {
   tabs.forEach((t, k) => t.classList.toggle('is-active', k === curIdx));
   const stg = $('.product-stage');
   if (stg) stg.style.transform = `translateX(-${curIdx * 100}%)`;
+  // Keep the active tab in view inside the tabs row (mobile horizontal scroll only)
+  const activeTab = tabs[curIdx];
+  const tabsRow   = $('.product-tabs');
+  if (activeTab && tabsRow && tabsRow.scrollWidth > tabsRow.clientWidth) {
+    const targetLeft = activeTab.offsetLeft - (tabsRow.clientWidth - activeTab.offsetWidth) / 2;
+    tabsRow.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+  }
   resetCarTimer();
 }
 function resetCarTimer() {
@@ -717,7 +724,10 @@ window.addEventListener('load', () => {
   const container = document.querySelector('.about-tab-container');
   const tabs      = document.querySelectorAll('.about-tab[data-tab]');
   const panels    = document.querySelectorAll('.about-panel[data-panel]');
+  const aboutSec  = document.getElementById('about');
   if (!container || !tabs.length || !panels.length) return;
+
+  const navOffset = () => parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-clear')) || 72;
 
   let busy = false;
   tabs.forEach(tab => {
@@ -731,6 +741,12 @@ window.addEventListener('load', () => {
 
       busy = true;
       tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+
+      // Smooth-scroll the about section to the top of viewport (clearing the nav)
+      if (aboutSec) {
+        const top = aboutSec.getBoundingClientRect().top + window.scrollY - navOffset();
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
 
       // Lock container at current height before the swap
       const startH = container.offsetHeight;
