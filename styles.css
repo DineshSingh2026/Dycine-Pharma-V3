@@ -841,33 +841,34 @@ section {
 }
 
 .mv-card {
-  text-align: center;
+  text-align: left;
   padding: 0 8px;
 }
 
 .mv-label {
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cyan-500);
-  margin: 0 0 14px;
+  font-size: clamp(28px, 4vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-transform: none;
+  color: var(--navy-900);
+  margin: 0 0 18px;
 }
 
 .mv-statement {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(18px, 2.2vw, 28px);
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  color: var(--navy-900);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: rgba(18,18,18,0.78);
   margin: 0;
   text-wrap: balance;
 }
 
 .mv-video-wrap {
-  width: clamp(220px, 26vw, 360px);
+  width: clamp(280px, 36vw, 520px);
   flex-shrink: 0;
   transform: rotate(-38deg);
   transition: transform 0.6s cubic-bezier(.22,1,.36,1);
@@ -1049,9 +1050,9 @@ section {
     max-width: 480px;
   }
   .mv-video-wrap {
-    width: 220px;
+    width: 260px;
     margin: 0 auto;
-    order: -1;
+    order: 0;
   }
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1619,6 +1620,48 @@ video.img {
   transition: opacity .2s, color .2s;
 }
 .footer ul a:hover { color: var(--cyan-500); opacity: 1; }
+
+.footer-certs {
+  max-width: 1500px;
+  margin: 48px auto 0;
+  padding: 32px 0 0;
+  border-top: 1px solid rgba(250,250,250,0.10);
+}
+.footer-certs h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.6);
+  margin: 0 0 20px;
+}
+.cert-row {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cert-row a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  background: rgba(250,250,250,0.92);
+  border-radius: 10px;
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.cert-row a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,180,216,0.22);
+}
+.cert-row img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
 .footer-bottom {
   max-width: 1500px;
   margin: 32px auto 0;
@@ -1770,6 +1813,9 @@ video.img {
   .catalogue-btn-wrap { padding: 22px 0 4px; }
   .products { padding-bottom: 56px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-certs { margin-top: 36px; padding-top: 24px; }
+  .cert-row { gap: 16px; }
+  .cert-row img { height: 56px; }
   .sidenav { gap: 16px; }
   .sn-label { display: none; }
   .sn-tick { width: 12px; }
