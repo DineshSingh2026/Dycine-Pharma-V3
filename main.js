@@ -40,6 +40,8 @@ function updateActiveNav() {
 }
 window.addEventListener('scroll', updateActiveNav, { passive: true });
 navLinks.forEach(a => a.addEventListener('click', e => {
+  // External or normal-href links (no data-target): let the browser navigate
+  if (!a.dataset.target) return;
   e.preventDefault();
   const t = document.getElementById(a.dataset.target);
   if (t) window.scrollTo({ top: t.offsetTop, behavior: 'smooth' });
