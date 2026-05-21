@@ -431,13 +431,6 @@ function setSlide(i) {
   tabs.forEach((t, k) => t.classList.toggle('is-active', k === curIdx));
   const stg = $('.product-stage');
   if (stg) stg.style.transform = `translateX(-${curIdx * 100}%)`;
-  // Pause videos in inactive slides so only the visible slide's video decodes
-  slides.forEach((s, k) => {
-    s.querySelectorAll('video').forEach(v => {
-      if (k === curIdx) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
-      else { v.pause(); }
-    });
-  });
   // Keep the active tab in view inside the tabs row (mobile horizontal scroll only)
   const activeTab = tabs[curIdx];
   const tabsRow   = $('.product-tabs');
@@ -733,29 +726,12 @@ window.addEventListener('load', () => {
 (() => {
   const navOffset = () => parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-clear')) || 72;
 
-  // Pause the heavy "hero" videos when their panel isn't active.
-  // Small background decoratives (e.g. team-bg-vid) keep autoplaying.
-  const refreshPanelVideos = (container, activePanel) => {
-    const heavy = container.querySelectorAll('.cap-hero-vid video, .mv-video-wrap video');
-    heavy.forEach(v => {
-      if (activePanel.contains(v)) {
-        const p = v.play(); if (p && p.catch) p.catch(() => {});
-      } else {
-        v.pause();
-      }
-    });
-  };
-
   document.querySelectorAll('.about-tab-container').forEach(container => {
     const section = container.closest('section');
     if (!section) return;
     const tabs   = section.querySelectorAll('.about-tab[data-tab]');
     const panels = container.querySelectorAll('.about-panel[data-panel]');
     if (!tabs.length || !panels.length) return;
-
-    // Initial state: pause everything except the already-active panel's videos
-    const initialActive = container.querySelector('.about-panel.is-active');
-    if (initialActive) refreshPanelVideos(container, initialActive);
 
     let busy = false;
     tabs.forEach(tab => {
@@ -781,8 +757,6 @@ window.addEventListener('load', () => {
         cur.classList.add('is-leaving');
         next.classList.add('is-active');
 
-        refreshPanelVideos(container, next);
-
         // eslint-disable-next-line no-unused-expressions
         container.offsetHeight;
         const endH = next.offsetHeight;
@@ -794,6 +768,40 @@ window.addEventListener('load', () => {
           busy = false;
         }, 550);
       });
+    });
+  });
+})();
+
+/* =========================
+   Video playback: only play section videos when scrolled into view.
+   Hero stays always-on. Reduces simultaneous decoders so videos run smoothly.
+   ========================= */
+(() => {
+  if (!('IntersectionObserver' in window)) return;
+  const selectors = ['#about', '#products', '#capabilities', '#partners'];
+  const sections = selectors.map(s => document.querySelector(s)).filter(Boolean);
+  if (!sections.length) return;
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.querySelectorAll('video').forEach(v => {
+        if (entry.isIntersecting) {
+          if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    });
+  }, { rootMargin: '160px 0px', threshold: 0.01 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // Pause off-screen non-hero videos at load so nothing decodes until needed
+  window.addEventListener('load', () => {
+    sections.forEach(s => {
+      const r = s.getBoundingClientRect();
+      const visible = r.bottom > -160 && r.top < window.innerHeight + 160;
+      if (!visible) s.querySelectorAll('video').forEach(v => v.pause());
     });
   });
 })();
