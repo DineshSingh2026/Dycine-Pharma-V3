@@ -40,7 +40,7 @@
     <a href="#hero" class="nav-link"><i class="fa-solid fa-house"></i>Home</a>
     <a href="#about" class="nav-link"><i class="fa-solid fa-building"></i>About Us</a>
     <a href="https://dycinepharma.in/products/" class="nav-link" target="_blank"><i class="fa-solid fa-flask-vial"></i>Products</a>
-    <a href="https://dycinepharma.in/manufacturing/" class="nav-link" target="_blank"><i class="fa-solid fa-industry"></i>Capabilities</a>
+    <a href="#capabilities" class="nav-link"><i class="fa-solid fa-industry"></i>Capabilities</a>
     <a href="https://dycinepharma.in/media-events/news-room/" class="nav-link" target="_blank"><i class="fa-solid fa-newspaper"></i>News</a>
     <div class="nav-dropdown">
       <button class="nav-link nav-dropdown-trigger"><i class="fa-solid fa-right-to-bracket"></i>Sign In<i class="fa-solid fa-chevron-down nav-chevron"></i></button>
@@ -62,7 +62,7 @@
   <a data-target="hero" class="is-active"><span class="sn-label">Home</span><span class="sn-tick"></span></a>
   <a data-target="about"><span class="sn-label">About Us</span><span class="sn-tick"></span></a>
   <a data-target="products"><span class="sn-label">Products</span><span class="sn-tick"></span></a>
-  <a href="https://dycinepharma.in/manufacturing/" target="_blank" rel="noopener"><span class="sn-label">Capabilities</span><span class="sn-tick"></span></a>
+  <a data-target="capabilities"><span class="sn-label">Capabilities</span><span class="sn-tick"></span></a>
   <a data-target="partners"><span class="sn-label">Partners</span><span class="sn-tick"></span></a>
   <a data-target="contact"><span class="sn-label">Contact Us</span><span class="sn-tick"></span></a>
 </nav>
@@ -340,8 +340,229 @@
 
   </div>
 
-  <div class="catalogue-btn-wrap">
-    <a href="https://dycinepharma.in/products/" class="catalogue-btn" target="_blank">Explore Full Catalogue <i class="fa-solid fa-arrow-right"></i></a>
+  <div class="products-massive">
+    <div class="products-massive-text">DYCINE PRODUCTS</div>
+    <span class="products-chevron" aria-hidden="true">
+      <i class="fa-solid fa-chevron-down"></i>
+    </span>
+  </div>
+</section>
+
+
+<!-- ============================================
+     CAPABILITIES (tabbed: R&D / Manufacturing / Certifications)
+     ============================================ -->
+<section id="capabilities" class="about capabilities" data-theme="light">
+  <div class="about-section-header">
+    <span class="eyebrow"><i class="fa-solid fa-flask"></i> Capabilities</span>
+  </div>
+
+  <div class="about-tab-container">
+    <!-- Panel: Research & Development -->
+    <div class="about-panel is-active" data-panel="rnd">
+      <div class="cap-hero">
+        <div class="cap-hero-copy">
+          <h2>Innovating healthcare through advanced <em>research &amp; development.</em></h2>
+          <p class="lede">
+            We discover novel therapies through early-stage research and rigorous clinical trials. AI-driven molecular modeling, world-class scientists, and global regulatory expertise turn breakthrough science into life-changing medicines.
+          </p>
+          <div class="therapeutic-focus">
+            <h4>Therapeutic Focus</h4>
+            <div class="focus-chips">
+              <span class="chip">Oncology</span>
+              <span class="chip">Neurology</span>
+              <span class="chip">Cardiology</span>
+              <span class="chip">Rare diseases</span>
+              <span class="chip">Biologics</span>
+              <span class="chip">Infectious diseases</span>
+            </div>
+          </div>
+        </div>
+        <div class="cap-hero-vid" aria-hidden="true">
+          <div class="cap-hero-vid-ring"></div>
+          <div class="cap-hero-vid-ring cap-hero-vid-ring-2"></div>
+          <video src="uploads/r&d-sequence-2.webm" autoplay loop muted playsinline preload="auto"></video>
+        </div>
+      </div>
+
+      <div class="cap-features">
+        <div class="cap-feat">
+          <i class="fa-solid fa-microscope"></i>
+          <h4>Discovery &amp; Early Research</h4>
+          <p>Exploring innovative molecules and drug candidates with AI-driven screening and molecular modeling.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-vials"></i>
+          <h4>Preclinical Studies</h4>
+          <p>Assessing safety, efficacy, and pharmacokinetics under rigorous, internationally aligned protocols.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <h4>Clinical Trials</h4>
+          <p>Full support across Phase&nbsp;I–III, from planning through global execution and patient recruitment.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-file-shield"></i>
+          <h4>Regulatory Affairs</h4>
+          <p>Ensuring compliance with international standards and accelerating approval pathways across every market.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-capsules"></i>
+          <h4>Drug Formulation</h4>
+          <p>Improving bioavailability, stability, and patient adherence through advanced formulation science.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-chart-line"></i>
+          <h4>Post-Market Surveillance</h4>
+          <p>Long-term monitoring of safety, effectiveness, and real-world outcomes after commercial launch.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Manufacturing -->
+    <div class="about-panel" data-panel="manufacturing">
+      <div class="cap-hero">
+        <div class="cap-hero-copy">
+          <h2>World-class manufacturing, backed by <em>science &amp; scale.</em></h2>
+          <p class="lede">
+            Decades of pharmaceutical expertise meet precision-driven processes. From WHO-GMP cleanrooms to digitally monitored production lines, we deliver consistently safe, effective formulations at every scale.
+          </p>
+          <div class="therapeutic-focus">
+            <h4>Compliance &amp; Standards</h4>
+            <div class="focus-chips">
+              <span class="chip">WHO-GMP</span>
+              <span class="chip">Cleanroom Validated</span>
+              <span class="chip">Zero-Observation Audits</span>
+              <span class="chip">HVAC Filtered Air</span>
+              <span class="chip">24/7 Utilities</span>
+              <span class="chip">Global Compliance</span>
+            </div>
+          </div>
+        </div>
+        <div class="cap-hero-vid" aria-hidden="true">
+          <div class="cap-hero-vid-ring"></div>
+          <div class="cap-hero-vid-ring cap-hero-vid-ring-2"></div>
+          <video src="uploads/v&t-sequence-2.webm" autoplay loop muted playsinline preload="auto"></video>
+        </div>
+      </div>
+
+      <div class="cap-features">
+        <div class="cap-feat">
+          <i class="fa-solid fa-wind"></i>
+          <h4>Cleanroom Manufacturing</h4>
+          <p>HVAC-controlled environments with filtered air protection for product sterility and integrity.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-microchip"></i>
+          <h4>Smart Production Lines</h4>
+          <p>Digitally monitored, automated lines that boost precision, reduce downtime, and lift batch reliability.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <h4>In-Process Quality Control</h4>
+          <p>Real-time monitoring catches deviations early. Potency, purity, and stability verified on every batch.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-layer-group"></i>
+          <h4>Rapid-Scale Modularity</h4>
+          <p>Modular infrastructure scales seamlessly from pilot batches to large commercial volumes without compromise.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-clipboard-check"></i>
+          <h4>Audit-Ready Documentation</h4>
+          <p>Digitally secured SOPs and batch records with full traceability from material sourcing to distribution.</p>
+        </div>
+        <div class="cap-feat">
+          <i class="fa-solid fa-bolt"></i>
+          <h4>24/7 Operations</h4>
+          <p>Round-the-clock utilities and power backup ensure zero-downtime production across multiple India units.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Certifications -->
+    <div class="about-panel" data-panel="certifications">
+      <h2>Certified excellence in <em>every dose.</em></h2>
+      <p class="lede">
+        From GMP and WHO-GMP to ISO standards and CDSCO licensing, our certifications reflect a relentless commitment to quality, safety, and global regulatory compliance, from raw material sourcing through final packaging.
+      </p>
+
+      <div class="cert-grid">
+        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-PHARMA-106.pdf" target="_blank" rel="noopener" aria-label="View WHO-GMP Certificate (PDF)">
+          <div class="cert-thumb"><img src="uploads/cert-1.jpg" alt="" loading="lazy" /></div>
+          <div class="cert-meta">
+            <div class="cert-name">WHO-GMP Certificate</div>
+            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+          </div>
+        </a>
+        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-109.pdf" target="_blank" rel="noopener" aria-label="View ISO 9001:2015 Certificate (PDF)">
+          <div class="cert-thumb"><img src="uploads/cert-2.jpg" alt="" loading="lazy" /></div>
+          <div class="cert-meta">
+            <div class="cert-name">ISO 9001:2015</div>
+            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+          </div>
+        </a>
+        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-108.pdf" target="_blank" rel="noopener" aria-label="View GMP Certificate (PDF)">
+          <div class="cert-thumb"><img src="uploads/cert-3.jpg" alt="" loading="lazy" /></div>
+          <div class="cert-meta">
+            <div class="cert-name">GMP Certificate</div>
+            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+          </div>
+        </a>
+        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-1102.pdf" target="_blank" rel="noopener" aria-label="View CDSCO License (PDF)">
+          <div class="cert-thumb"><img src="uploads/cert-4.jpg" alt="" loading="lazy" /></div>
+          <div class="cert-meta">
+            <div class="cert-name">CDSCO License</div>
+            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Capabilities tabs -->
+  <div class="about-tabs-row">
+    <button class="about-tab is-active" data-tab="rnd"><i class="fa-solid fa-microscope"></i> Research &amp; Development</button>
+    <button class="about-tab" data-tab="manufacturing"><i class="fa-solid fa-industry"></i> Manufacturing</button>
+    <button class="about-tab" data-tab="certifications"><i class="fa-solid fa-award"></i> Certifications</button>
+  </div>
+</section>
+
+
+<!-- ============================================
+     COLLABORATORS & PARTNERS
+     ============================================ -->
+<section id="partners" class="partners" data-theme="dark">
+  <div class="partners-head">
+    <span class="eyebrow"><i class="fa-solid fa-handshake"></i> Collaborators &amp; Partners</span>
+    <h2>Trusted by leaders in <em>global health.</em></h2>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-fade marquee-fade-l"></div>
+    <div class="marquee-fade marquee-fade-r"></div>
+    <div class="marquee-track">
+      <div class="marquee-set">
+        <img src="assets/partner-antigenika.png" alt="Antigenika" width="190" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-toxiven.png" alt="Toxiven Biopharma" width="139" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-reading.png" alt="University of Reading" width="147" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-bhu.png" alt="Banaras Hindu University" width="174" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-antigenika.png" alt="Antigenika" width="190" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-toxiven.png" alt="Toxiven Biopharma" width="139" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-reading.png" alt="University of Reading" width="147" height="48" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/partner-bhu.png" alt="Banaras Hindu University" width="174" height="48" loading="eager" decoding="async" fetchpriority="high" />
+      </div>
+      <div class="marquee-set" aria-hidden="true">
+        <img src="assets/partner-antigenika.png" alt="" width="190" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-toxiven.png" alt="" width="139" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-reading.png" alt="" width="147" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-bhu.png" alt="" width="174" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-antigenika.png" alt="" width="190" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-toxiven.png" alt="" width="139" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-reading.png" alt="" width="147" height="48" loading="eager" decoding="async" />
+        <img src="assets/partner-bhu.png" alt="" width="174" height="48" loading="eager" decoding="async" />
+      </div>
+    </div>
   </div>
 </section>
 
@@ -391,44 +612,6 @@
           <strong>Dycine Pharma · HQ</strong>
           IDA Cherlapally, Hyderabad
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================
-     COLLABORATORS & PARTNERS
-     ============================================ -->
-<section id="partners" class="partners" data-theme="dark">
-  <div class="partners-head">
-    <span class="eyebrow"><i class="fa-solid fa-handshake"></i> Collaborators &amp; Partners</span>
-    <h2>Trusted by leaders in <em>global health.</em></h2>
-  </div>
-
-  <div class="marquee-wrap">
-    <div class="marquee-fade marquee-fade-l"></div>
-    <div class="marquee-fade marquee-fade-r"></div>
-    <div class="marquee-track">
-      <div class="marquee-set">
-        <img src="assets/partner-antigenika.png" alt="Antigenika" width="190" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-toxiven.png" alt="Toxiven Biopharma" width="139" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-reading.png" alt="University of Reading" width="147" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-bhu.png" alt="Banaras Hindu University" width="174" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-antigenika.png" alt="Antigenika" width="190" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-toxiven.png" alt="Toxiven Biopharma" width="139" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-reading.png" alt="University of Reading" width="147" height="48" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="assets/partner-bhu.png" alt="Banaras Hindu University" width="174" height="48" loading="eager" decoding="async" fetchpriority="high" />
-      </div>
-      <div class="marquee-set" aria-hidden="true">
-        <img src="assets/partner-antigenika.png" alt="" width="190" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-toxiven.png" alt="" width="139" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-reading.png" alt="" width="147" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-bhu.png" alt="" width="174" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-antigenika.png" alt="" width="190" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-toxiven.png" alt="" width="139" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-reading.png" alt="" width="147" height="48" loading="eager" decoding="async" />
-        <img src="assets/partner-bhu.png" alt="" width="174" height="48" loading="eager" decoding="async" />
       </div>
     </div>
   </div>

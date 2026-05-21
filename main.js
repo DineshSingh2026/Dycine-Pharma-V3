@@ -529,19 +529,19 @@ function initGlobe() {
       const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
       const sprite = new THREE.Sprite(mat);
       const isHQ = d.name.includes('HQ');
-      const w = isHQ ? 7 : 5;
-      const h = isHQ ? 4.7 : 3.3;
+      const w = isHQ ? 12 : 9;
+      const h = isHQ ? 8 : 6;
       sprite.scale.set(w, h, 1);
-      sprite.position.y = h / 2 + 1.5;
+      sprite.position.y = h / 2 + 2;
       group.add(sprite);
       // Pin stem
-      const stemGeo = new THREE.CylinderGeometry(0.15, 0.15, 1.5, 4);
+      const stemGeo = new THREE.CylinderGeometry(0.2, 0.2, 2, 4);
       const stemMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 });
       const stem = new THREE.Mesh(stemGeo, stemMat);
-      stem.position.y = 0.75;
+      stem.position.y = 1;
       group.add(stem);
       // Glow dot at base
-      const dotGeo = new THREE.SphereGeometry(0.5, 8, 8);
+      const dotGeo = new THREE.SphereGeometry(0.7, 8, 8);
       const dotMat = new THREE.MeshBasicMaterial({ color: 0x00B4D8, transparent: true, opacity: 0.8 });
       const dot = new THREE.Mesh(dotGeo, dotMat);
       group.add(dot);
@@ -719,57 +719,55 @@ window.addEventListener('load', () => {
 });
 
 /* =========================
-   About-section tab swap (Global / Mission & Vision / Our Team)
+   Tabbed-panel swap (About + Capabilities + any future section using
+   .about-tab-container / .about-panel / .about-tab pattern)
    Horizontal slide + fade between panels, animated container height
    ========================= */
 (() => {
-  const container = document.querySelector('.about-tab-container');
-  const tabs      = document.querySelectorAll('.about-tab[data-tab]');
-  const panels    = document.querySelectorAll('.about-panel[data-panel]');
-  const aboutSec  = document.getElementById('about');
-  if (!container || !tabs.length || !panels.length) return;
-
   const navOffset = () => parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-clear')) || 72;
 
-  let busy = false;
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const key = tab.dataset.tab;
-      if (busy || tab.classList.contains('is-active')) return;
+  document.querySelectorAll('.about-tab-container').forEach(container => {
+    const section = container.closest('section');
+    if (!section) return;
+    const tabs   = section.querySelectorAll('.about-tab[data-tab]');
+    const panels = container.querySelectorAll('.about-panel[data-panel]');
+    if (!tabs.length || !panels.length) return;
 
-      const next = document.querySelector(`.about-panel[data-panel="${key}"]`);
-      const cur  = document.querySelector('.about-panel.is-active');
-      if (!next || !cur || next === cur) return;
+    let busy = false;
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const key = tab.dataset.tab;
+        if (busy || tab.classList.contains('is-active')) return;
 
-      busy = true;
-      tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+        const next = container.querySelector(`.about-panel[data-panel="${key}"]`);
+        const cur  = container.querySelector('.about-panel.is-active');
+        if (!next || !cur || next === cur) return;
 
-      // Smooth-scroll the about section to the top of viewport (clearing the nav)
-      if (aboutSec) {
-        const top = aboutSec.getBoundingClientRect().top + window.scrollY - navOffset();
+        busy = true;
+        tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+
+        // Smooth-scroll this section to top of viewport (clearing the nav)
+        const top = section.getBoundingClientRect().top + window.scrollY - navOffset();
         window.scrollTo({ top, behavior: 'smooth' });
-      }
 
-      // Lock container at current height before the swap
-      const startH = container.offsetHeight;
-      container.style.height = startH + 'px';
+        const startH = container.offsetHeight;
+        container.style.height = startH + 'px';
 
-      // Swap classes (next becomes position:relative; old leaves)
-      cur.classList.remove('is-active');
-      cur.classList.add('is-leaving');
-      next.classList.add('is-active');
+        cur.classList.remove('is-active');
+        cur.classList.add('is-leaving');
+        next.classList.add('is-active');
 
-      // Force reflow, then animate to new content height
-      // eslint-disable-next-line no-unused-expressions
-      container.offsetHeight;
-      const endH = next.offsetHeight;
-      container.style.height = endH + 'px';
+        // eslint-disable-next-line no-unused-expressions
+        container.offsetHeight;
+        const endH = next.offsetHeight;
+        container.style.height = endH + 'px';
 
-      setTimeout(() => {
-        cur.classList.remove('is-leaving');
-        container.style.height = '';
-        busy = false;
-      }, 550);
+        setTimeout(() => {
+          cur.classList.remove('is-leaving');
+          container.style.height = '';
+          busy = false;
+        }, 550);
+      });
     });
   });
 })();
