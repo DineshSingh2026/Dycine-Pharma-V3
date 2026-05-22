@@ -48,10 +48,41 @@ navLinks.forEach(a => a.addEventListener('click', e => {
 }));
 
 // Top nav: hamburger toggle + Sign In dropdown
-$('.nav-burger')?.addEventListener('click', e => {
-  e.stopPropagation();
-  $('.top-nav')?.classList.toggle('is-open');
-});
+// On mobile, teleport .nav-links to <body> so it escapes any containing block
+// created by ancestors with backdrop-filter (which would trap position: fixed).
+(() => {
+  const topNav   = $('.top-nav');
+  const navLinks = topNav?.querySelector('.nav-links');
+  if (!topNav || !navLinks) return;
+  const origParent = navLinks.parentNode;
+  const origNext   = navLinks.nextSibling;
+
+  const syncTeleport = () => {
+    const isMobile = window.matchMedia('(max-width: 820px)').matches;
+    const isOpen   = topNav.classList.contains('is-open');
+    if (isMobile && isOpen && navLinks.parentNode !== document.body) {
+      document.body.appendChild(navLinks);
+      navLinks.classList.add('is-teleported');
+    } else if ((!isMobile || !isOpen) && navLinks.parentNode === document.body) {
+      origParent.insertBefore(navLinks, origNext);
+      navLinks.classList.remove('is-teleported');
+    }
+  };
+
+  $('.nav-burger')?.addEventListener('click', e => {
+    e.stopPropagation();
+    topNav.classList.toggle('is-open');
+    syncTeleport();
+  });
+  // Close menu when a nav-link inside the teleported menu is clicked
+  navLinks.addEventListener('click', e => {
+    if (e.target.closest('.nav-link') && topNav.classList.contains('is-open')) {
+      topNav.classList.remove('is-open');
+      syncTeleport();
+    }
+  });
+  window.addEventListener('resize', syncTeleport);
+})();
 $('.nav-dropdown-trigger')?.addEventListener('click', e => {
   e.stopPropagation();
   e.preventDefault();
@@ -59,7 +90,15 @@ $('.nav-dropdown-trigger')?.addEventListener('click', e => {
 });
 document.addEventListener('click', e => {
   const nav = $('.top-nav');
-  if (nav && !nav.contains(e.target)) nav.classList.remove('is-open');
+  if (nav && !nav.contains(e.target) && !e.target.closest('.nav-links.is-teleported')) {
+    nav.classList.remove('is-open');
+    // trigger teleport sync after class change
+    const navLinks = nav.querySelector('.nav-links') || document.querySelector('.nav-links.is-teleported');
+    if (navLinks && navLinks.classList.contains('is-teleported')) {
+      // re-fire so the teleport logic can move it back
+      window.dispatchEvent(new Event('resize'));
+    }
+  }
   const dd = $('.nav-dropdown');
   if (dd && !dd.contains(e.target)) dd.classList.remove('is-open');
 });
@@ -516,11 +555,12 @@ function initGlobe() {
     .labelResolution(2)
     .arcsData(arcs)
     .arcColor('color')
-    .arcDashLength(0.5)
-    .arcDashGap(1.2)
-    .arcDashAnimateTime(2200)
-    .arcStroke(0.45)
-    .arcAltitudeAutoScale(0.6)
+    .arcDashLength(0.4)
+    .arcDashGap(2)
+    .arcDashInitialGap(() => Math.random() * 2)
+    .arcDashAnimateTime(6500)
+    .arcStroke(0.5)
+    .arcAltitudeAutoScale(0.7)
     .customLayerData(flagCities)
     .customThreeObject(d => {
       const group = new THREE.Group();
@@ -576,8 +616,10 @@ function initGlobe() {
   camera.position.set(0, 60, 270);
   camera.lookAt(0, 0, 0);
 
-  let userRotY = 0, userRotX = 0, autoRot = 0;
-  const velocity = 0.0014;
+  // Start with India (HQ) centered toward the camera so visitors see it on load
+  let userRotY = 0, userRotX = 0;
+  let autoRot = -HQ.lng * Math.PI / 180;
+  const velocity = 0.00035;
   let dragging = false, lastX = 0, lastY = 0;
   const dom = renderer.domElement;
 
@@ -804,4 +846,75 @@ window.addEventListener('load', () => {
       if (!visible) s.querySelectorAll('video').forEach(v => v.pause());
     });
   });
+})();
+
+// ----------------------------------------------------------
+// Contact CTA — single button reveals Contact Us + Work with us
+// ----------------------------------------------------------
+(() => {
+  const trigger = document.querySelector('[data-contact-trigger]');
+  const toggleBtn = document.querySelector('[data-contact-toggle]');
+  const options = document.querySelector('[data-contact-options]');
+  if (!trigger || !toggleBtn || !options) return;
+  toggleBtn.addEventListener('click', e => {
+    e.preventDefault();
+    trigger.classList.add('is-hidden');
+    options.classList.remove('is-collapsed');
+    options.classList.add('is-revealed');
+  });
+})();
+
+// ----------------------------------------------------------
+// Careers section — reveal on "Work with us", close on X
+// ----------------------------------------------------------
+(() => {
+  const section = document.getElementById('careers');
+  const form    = document.getElementById('careers-form');
+  if (!section) return;
+
+  const open = () => {
+    section.classList.add('is-open');
+    section.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
+  const close = () => {
+    section.classList.remove('is-open');
+    section.setAttribute('aria-hidden', 'true');
+    // Also collapse the contact CTAs back to the single "Contact Us" trigger
+    const trigger = document.querySelector('[data-contact-trigger]');
+    const options = document.querySelector('[data-contact-options]');
+    if (trigger && options) {
+      trigger.classList.remove('is-hidden');
+      options.classList.add('is-collapsed');
+      options.classList.remove('is-revealed');
+    }
+  };
+
+  document.querySelectorAll('[data-careers-open]').forEach(el => {
+    el.addEventListener('click', e => { e.preventDefault(); open(); });
+  });
+  document.querySelectorAll('[data-careers-close]').forEach(el => {
+    el.addEventListener('click', close);
+  });
+
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const lines = [
+        `Full Name: ${fd.get('fullName') || ''}`,
+        `Phone: ${fd.get('phone') || ''}`,
+        `Email: ${fd.get('email') || ''}`,
+        `Applied Position: ${fd.get('position') || ''}`,
+        '',
+        'Cover Letter:',
+        fd.get('coverletter') || ''
+      ];
+      const subject = `Job Application — ${fd.get('position') || 'General'}`;
+      const body    = encodeURIComponent(lines.join('\n'));
+      window.location.href = `mailto:Hrd@dycinepharma.in?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+  }
 })();
