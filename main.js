@@ -849,22 +849,6 @@ window.addEventListener('load', () => {
 })();
 
 // ----------------------------------------------------------
-// Contact CTA — single button reveals Contact Us + Work with us
-// ----------------------------------------------------------
-(() => {
-  const trigger = document.querySelector('[data-contact-trigger]');
-  const toggleBtn = document.querySelector('[data-contact-toggle]');
-  const options = document.querySelector('[data-contact-options]');
-  if (!trigger || !toggleBtn || !options) return;
-  toggleBtn.addEventListener('click', e => {
-    e.preventDefault();
-    trigger.classList.add('is-hidden');
-    options.classList.remove('is-collapsed');
-    options.classList.add('is-revealed');
-  });
-})();
-
-// ----------------------------------------------------------
 // Careers section — reveal on "Work with us", close on X
 // ----------------------------------------------------------
 (() => {
@@ -882,14 +866,6 @@ window.addEventListener('load', () => {
   const close = () => {
     section.classList.remove('is-open');
     section.setAttribute('aria-hidden', 'true');
-    // Also collapse the contact CTAs back to the single "Contact Us" trigger
-    const trigger = document.querySelector('[data-contact-trigger]');
-    const options = document.querySelector('[data-contact-options]');
-    if (trigger && options) {
-      trigger.classList.remove('is-hidden');
-      options.classList.add('is-collapsed');
-      options.classList.remove('is-revealed');
-    }
   };
 
   document.querySelectorAll('[data-careers-open]').forEach(el => {
