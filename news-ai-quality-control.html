@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dycine Pharma | Our Products</title>
+<title>Dycine Pharma | AI-Driven Quality Control Platform</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +13,12 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body data-theme="dark" class="products-page">
+<body data-theme="dark" class="press-page news-page article-page">
 
 <!-- FLOATING LOGO CARD -->
 <a href="index.html" class="logo-card" aria-label="Dycine Pharma Home">
-  <img src="assets/logo-light.png?v=3" alt="Dycine Pharma" class="logo-color" />
-  <img src="assets/logo-dark.png?v=3" alt="Dycine Pharma" class="logo-white" />
+  <img src="assets/logo-light.png" alt="Dycine Pharma" class="logo-color" />
+  <img src="assets/logo-dark.png" alt="Dycine Pharma" class="logo-white" />
 </a>
 
 <!-- TOP NAVIGATION CARD -->
@@ -29,7 +29,7 @@
     </div>
     <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i>Home</a>
     <a href="index.html#about" class="nav-link"><i class="fa-solid fa-building"></i>About Us</a>
-    <a href="products.html" class="nav-link is-active-page"><i class="fa-solid fa-flask-vial"></i>Products</a>
+    <a href="products.html" class="nav-link"><i class="fa-solid fa-flask-vial"></i>Products</a>
     <div class="nav-products-submenu">
       <a href="products.html?cat=Tablet" class="nav-link nav-sublink"><i class="fa-solid fa-tablets"></i>Tablets</a>
       <a href="products.html?cat=Capsule" class="nav-link nav-sublink"><i class="fa-solid fa-capsules"></i>Capsules</a>
@@ -38,7 +38,7 @@
     </div>
     <a href="index.html#capabilities" class="nav-link"><i class="fa-solid fa-industry"></i>Capabilities</a>
     <div class="nav-dropdown">
-      <button class="nav-link nav-dropdown-trigger"><i class="fa-solid fa-newspaper"></i>News<i class="fa-solid fa-chevron-down nav-chevron"></i></button>
+      <button class="nav-link nav-dropdown-trigger is-active-page"><i class="fa-solid fa-newspaper"></i>News<i class="fa-solid fa-chevron-down nav-chevron"></i></button>
       <div class="nav-dropdown-menu">
         <a href="press-releases.html" class="nav-dropdown-item"><i class="fa-solid fa-bullhorn"></i>Press Release</a>
         <a href="news-room.html" class="nav-dropdown-item"><i class="fa-solid fa-newspaper"></i>News Room</a>
@@ -57,77 +57,56 @@
   </button>
 </nav>
 
-<!-- PRODUCTS HERO -->
-<section class="products-hero" data-theme="dark">
+<!-- ARTICLE HERO -->
+<section class="products-hero article-hero article-hero-3" data-theme="dark">
   <div class="products-hero-inner">
     <div class="products-breadcrumb">
-      <a href="index.html"><i class="fa-solid fa-capsules"></i> NEW PRODUCT INNOVATION</a>
+      <a href="news-room.html"><i class="fa-solid fa-newspaper"></i> NEWS ROOM</a>
       <span class="bc-arrow"><i class="fa-solid fa-arrow-right-long"></i></span>
-      <span class="bc-current">OUR PRODUCTS</span>
+      <span class="bc-current">AI-DRIVEN QUALITY CONTROL</span>
     </div>
-    <h1 class="products-hero-title">
-      EXPLORE OUR WIDE<br/>
-      RANGE OF <span class="products-rotator" id="products-rotator" aria-label="products"><span class="pr-current">PRODUCTS</span></span>
-    </h1>
+    <div class="article-meta-row">
+      <span class="article-cat">News</span>
+      <span class="article-meta-sep">·</span>
+      <span class="article-date"><i class="fa-regular fa-calendar"></i> June 19, 2025</span>
+      <span class="article-meta-sep">·</span>
+      <span class="article-byline"><i class="fa-regular fa-user"></i> By Devyansh Tripathi</span>
+    </div>
+    <h1 class="article-title">Dycine Pharma Launches AI-Driven Quality Control Platform to Elevate Manufacturing Standards</h1>
   </div>
 </section>
 
-<!-- MAIN: SIDEBAR + GRID -->
-<section class="products-main" data-theme="light">
-  <aside class="products-sidebar">
-    <h3 class="products-sidebar-title">CATEGORY</h3>
-    <button class="products-sidebar-btn is-active" data-cat="all">
-      <i class="fa-solid fa-grip psb-icon" aria-hidden="true"></i> All Products
-    </button>
-    <button class="products-sidebar-btn" data-cat="Tablet">
-      <i class="fa-solid fa-tablets psb-icon" aria-hidden="true"></i> Tablets
-    </button>
-    <button class="products-sidebar-btn" data-cat="Capsule">
-      <i class="fa-solid fa-capsules psb-icon" aria-hidden="true"></i> Capsules
-    </button>
-    <button class="products-sidebar-btn" data-cat="Syrup">
-      <i class="fa-solid fa-prescription-bottle psb-icon" aria-hidden="true"></i> Syrups
-    </button>
-    <button class="products-sidebar-btn" data-cat="Injectable">
-      <i class="fa-solid fa-syringe psb-icon" aria-hidden="true"></i> Injections
-    </button>
+<!-- ARTICLE BODY -->
+<section class="article-main" data-theme="light">
+  <article class="article-body">
+    <p>In a groundbreaking move that reinforces its position as a leader in pharmaceutical innovation, <strong>Dycine Pharma</strong> has officially launched a next-generation <strong>AI-driven Quality Control (QC) platform</strong> across its global manufacturing units. This initiative is aimed at enhancing precision, reducing inspection time, and ensuring real-time compliance with the highest Good Manufacturing Practices (GMP) standards.</p>
 
-    <h3 class="products-sidebar-title products-sidebar-title-div">DIVISION</h3>
-    <button class="products-sidebar-btn is-active" data-div="all">
-      <i class="fa-solid fa-layer-group psb-icon" aria-hidden="true"></i> All Divisions
-    </button>
-    <button class="products-sidebar-btn" data-div="AXA">
-      <i class="fa-solid fa-shield-halved psb-icon" aria-hidden="true"></i> AXA
-    </button>
-    <button class="products-sidebar-btn" data-div="NURA">
-      <i class="fa-solid fa-brain psb-icon" aria-hidden="true"></i> NURA
-    </button>
-  </aside>
+    <p>As the pharmaceutical landscape continues to evolve, so does the demand for smarter, faster, and more reliable quality systems. Dycine's new platform leverages advanced machine learning algorithms, predictive analytics, and automated inspection technology to monitor product quality at every step of the manufacturing process. From raw material validation to finished product packaging, the AI engine provides real-time insights, flags inconsistencies, and improves decision-making with unmatched accuracy.</p>
 
-  <div class="products-grid-wrap">
-    <div class="products-grid" id="products-grid" aria-live="polite">
-      <!-- Cards injected by JS -->
+    <blockquote class="article-quote">
+      <p>"With this launch, we're not just optimizing our processes—we're redefining what quality assurance looks like in pharma. This isn't about replacing human expertise; it's about empowering our teams with tools that eliminate guesswork and strengthen regulatory confidence."</p>
+      <cite>— Mr. R. Kumar, Head of Global Manufacturing</cite>
+    </blockquote>
+
+    <p>The system integrates seamlessly with existing ERP and compliance tracking tools, creating a unified dashboard for operations, quality assurance, and regulatory teams. It also includes intelligent documentation support, reducing the manual burden often associated with batch records and audit trails.</p>
+
+    <p>The move comes at a time when global pharmaceutical companies are under increasing pressure to meet stricter regulatory requirements and reduce time-to-market for essential drugs. Dycine's AI-enhanced QC system positions the company ahead of the curve, giving it a competitive edge in operational efficiency and patient safety.</p>
+
+    <p>In pilot phases across two of its plants in India and Southeast Asia, Dycine recorded a <strong>30% reduction in production downtime</strong>, a <strong>45% improvement in defect detection</strong>, and faster resolution of non-conformance issues. The company plans to roll out the platform across all its facilities by the end of Q3 2025.</p>
+
+    <p>The innovation is part of Dycine's broader vision to become a <strong>"smart pharma" leader</strong>—one that integrates technology, sustainability, and science to build a more responsive and resilient healthcare supply chain.</p>
+
+    <blockquote class="article-quote">
+      <p>"Our industry must embrace digital transformation not as an option, but as a responsibility. Every advancement we make in our labs or factories ultimately translates into safer, more effective medicines for patients."</p>
+      <cite>— Mr. R. Kumar</cite>
+    </blockquote>
+
+    <p>With this bold step, Dycine Pharma not only reinforces its core values of quality and safety but also takes a confident leap into the future of intelligent manufacturing.</p>
+
+    <div class="article-back-row">
+      <a href="news-room.html" class="article-back"><i class="fa-solid fa-arrow-left"></i> Back to News Room</a>
     </div>
-    <div class="products-empty" id="products-empty" hidden>
-      <i class="fa-solid fa-inbox"></i>
-      <p>No products in this combination.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTROLS: PAGINATION -->
-<section class="products-controls" data-theme="light">
-  <div class="pagination" id="pagination" aria-label="Pagination"></div>
-</section>
-
-<!-- BIG DECORATIVE PRODUCT INNOVATION -->
-<section class="products-massive products-massive-page" data-theme="dark">
-  <div class="products-massive-text">PRODUCT INNOVATION</div>
-  <a class="products-chevron" href="index.html#all-products" aria-label="Back to ALL DYCINE PRODUCTS on home page">
-    <svg class="products-chevron-svg" width="113" height="42" viewBox="0 0 113 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M1 2L57.5039 40.5L112 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  </a>
+  </article>
 </section>
 
 <!-- FOOTER -->
@@ -144,7 +123,6 @@
         <li><a href="https://accounts.zoho.in/signin" target="_blank">Sign In</a></li>
       </ul>
     </div>
-
     <div>
       <h4>Categories</h4>
       <ul>
@@ -154,7 +132,6 @@
         <li><a href="products.html?cat=Injectable">Injectables</a></li>
       </ul>
     </div>
-
     <div>
       <h4>Connect</h4>
       <ul>
@@ -164,7 +141,6 @@
       </ul>
     </div>
   </div>
-
   <div class="footer-bottom-row">
     <div class="footer-bottom-left">
       <div class="footer-certs">
@@ -188,26 +164,9 @@
       </a>
     </div>
   </div>
-
   <div class="footer-massive">DYCINE PHARMA</div>
 </section>
 
-<!-- PRODUCT DETAIL MODAL -->
-<div class="pmodal" id="pmodal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="pmodal-backdrop" data-pmodal-close></div>
-  <div class="pmodal-card" role="document">
-    <button type="button" class="pmodal-close" data-pmodal-close aria-label="Close">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <div class="pmodal-img" id="pmodal-img"></div>
-    <div class="pmodal-body">
-      <h3 class="pmodal-name" id="pmodal-name"></h3>
-      <dl class="pmodal-meta" id="pmodal-meta"></dl>
-    </div>
-  </div>
-</div>
-
 <script src="main.js"></script>
-<script src="products.js"></script>
 </body>
 </html>
