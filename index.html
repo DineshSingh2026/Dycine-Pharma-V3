@@ -40,16 +40,16 @@
     <div class="mobile-menu-logo" aria-hidden="true">
       <img src="assets/logo-light.png" alt="Dycine Pharma" />
     </div>
-    <a href="#hero" class="nav-link"><i class="fa-solid fa-house"></i>Home</a>
-    <a href="#about" class="nav-link"><i class="fa-solid fa-building"></i>About Us</a>
-    <a href="products.html" class="nav-link"><i class="fa-solid fa-flask-vial"></i>Products</a>
+    <a href="#hero" class="nav-link" data-target="hero"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="#about" class="nav-link" data-target="about"><i class="fa-solid fa-building"></i>About Us</a>
+    <a href="products.html" class="nav-link" data-target="products"><i class="fa-solid fa-flask-vial"></i>Products</a>
     <div class="nav-products-submenu">
       <a href="products.html?cat=Tablet" class="nav-link nav-sublink"><i class="fa-solid fa-tablets"></i>Tablets</a>
       <a href="products.html?cat=Capsule" class="nav-link nav-sublink"><i class="fa-solid fa-capsules"></i>Capsules</a>
       <a href="products.html?cat=Syrup" class="nav-link nav-sublink"><i class="fa-solid fa-prescription-bottle"></i>Syrups</a>
       <a href="products.html?cat=Injectable" class="nav-link nav-sublink"><i class="fa-solid fa-syringe"></i>Injectables</a>
     </div>
-    <a href="#capabilities" class="nav-link"><i class="fa-solid fa-industry"></i>Capabilities</a>
+    <a href="#capabilities" class="nav-link" data-target="capabilities"><i class="fa-solid fa-industry"></i>Capabilities</a>
     <a href="https://dycinepharma.in/media-events/news-room/" class="nav-link" target="_blank"><i class="fa-solid fa-newspaper"></i>News</a>
     <div class="nav-dropdown">
       <button class="nav-link nav-dropdown-trigger"><i class="fa-solid fa-right-to-bracket"></i>Sign In<i class="fa-solid fa-chevron-down nav-chevron"></i></button>
@@ -349,7 +349,7 @@
 
   </div>
 
-  <div class="products-massive">
+  <div class="products-massive" id="all-products">
     <div class="products-massive-text">ALL DYCINE PRODUCTS</div>
     <a class="products-chevron" href="products.html" aria-label="Explore the full product catalogue">
       <svg class="products-chevron-svg" width="113" height="42" viewBox="0 0 113 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -576,8 +576,9 @@
       <div class="contact-block">
         <div class="ckey"><i class="fa-solid fa-location-dot"></i> Head Office</div>
         <div class="cval">
-          Plot No. 47, Phase&nbsp;II, IDA Cherlapally,<br/>
-          Hyderabad — 500 051, Telangana, India
+          Smart Industrial Park Natrip, Pithampur Industrial Area,<br/>
+          Industrial Area, Pithampur, Asukhedi,<br/>
+          Madhya Pradesh 453661, India
         </div>
       </div>
       <div class="contact-block">
@@ -627,9 +628,9 @@
     </div>
 
     <div class="contact-cta-row">
-      <a class="contact-cta contact-cta-primary" href="mailto:info@dycinepharma.in">
+      <button type="button" class="contact-cta contact-cta-primary" aria-label="Contact Us">
         <i class="fa-solid fa-paper-plane"></i> Contact Us
-      </a>
+      </button>
       <button type="button" class="contact-cta contact-cta-ghost" data-careers-open>
         <i class="fa-solid fa-briefcase"></i> Work with us
       </button>

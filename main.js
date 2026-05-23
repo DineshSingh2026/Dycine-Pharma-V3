@@ -25,6 +25,16 @@ function updateActiveNav() {
     if (s.offsetTop <= y) active = s;
   }
   navLinks.forEach(a => a.classList.toggle('is-active', a.dataset.target === active.id));
+  // Also mark TOP NAV links active — uses data-target attribute or extracted hash from href
+  document.querySelectorAll('.top-nav .nav-link, .nav-links.is-teleported .nav-link').forEach(a => {
+    let target = a.dataset.target;
+    if (!target) {
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('#')) target = href.slice(1);
+      else if (href.includes('#')) target = href.split('#')[1];
+    }
+    a.classList.toggle('is-active', !!target && target === active.id);
+  });
   // Toggle top-nav transparent style when in hero
   const topNav = document.querySelector('.top-nav');
   if (topNav) {
@@ -33,12 +43,17 @@ function updateActiveNav() {
   // Toggle logo card between white (hero) and colored (other sections)
   const logoCard = document.querySelector('.logo-card');
   if (logoCard) {
-    logoCard.classList.toggle('is-hero', active.id === 'hero');
+    // Use white logo on any dark-themed section, colored logo on light-themed sections
+    const isDark = (active.dataset.theme || 'light') === 'dark';
+    logoCard.classList.toggle('is-hero', isDark);
   }
   const theme = active.dataset.theme || 'light';
   setTheme(theme);
 }
 window.addEventListener('scroll', updateActiveNav, { passive: true });
+// Run once on load so Home (or whichever section the user lands on) is highlighted immediately
+window.addEventListener('DOMContentLoaded', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
 navLinks.forEach(a => a.addEventListener('click', e => {
   // External or normal-href links (no data-target): let the browser navigate
   if (!a.dataset.target) return;

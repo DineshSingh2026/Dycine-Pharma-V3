@@ -328,6 +328,127 @@
   };
 
   // ----------------------------------------------------------
+  // Product image URLs (hot-linked from dycinepharma.in WP media)
+  // ----------------------------------------------------------
+  const _IMG_BASE = 'https://dycinepharma.in/wp-content/uploads/2025/06/';
+  const PRODUCT_IMAGES_RAW = {
+    "AMBIVAL 10": "ambival-10-1-1-1.png",
+    "AMBIVAL 25": "ambival-25-1-1.png",
+    "BELGYN 400": "Belgyn_400-2-1.png",
+    "KORDMOX": "Kordmox-1.png",
+    "LEVALTY 250 MG": "Levalty-250-2.png",
+    "LEVALTY 500 MG": "Levalty-500-2.png",
+    "LEZAPIN-2.5 MG TAB": "Lezapin-2.5-2.png",
+    "LEZAPIN-5 MG TAB": "Lezapin-5-2.png",
+    "LISWAS 10": "Liswas-10-1.png",
+    "LOFEBRIL 100": "Lofebril-100-1.png",
+    "LOFEBRIL 50": "Lofebril-50-1-1.png",
+    "MIGRALES 20": "Migrales-20-1.png",
+    "MIGRALES 40": "Migrales-40-1.png",
+    "MIGRALES PLUS": "Migrales-Plus-1.png",
+    "NEUCLOX-625": "Neuclox-625-2.png",
+    "ONBIXIN 12.5": "Onbixin-12.5-2.png",
+    "ONBIXIN 25": "Onbixin-25-2.png",
+    "ONBIXIN 37.5": "Onbixin-37.5-2.png",
+    "RANDRO 10": "Randro-10-2.png",
+    "RANDRO 5": "Randro-5-2.png",
+    "RELIGABA 150MG": "Religaba-150-1.png",
+    "RELIGABA 75MG": "Religaba-75-1.png",
+    "REVOZIP-0.25 MG TAB": "Revozip-0.25-2.png",
+    "REVOZIP-0.5 MG TAB": "Revozip-0.50-2.png",
+    "REVOZIP-1 MG TAB": "Revozip-1-mg-2.png",
+    "REVOZIP-2 MG TAB": "Revozip-2mg-2.png",
+    "RISDIL 1 MG TAB": "Risdil-1-2.png",
+    "RISDIL FORTE": "Risdil-Forte-3.png",
+    "RISDIL PLUS TAB": "Risdil-PLus-3.png",
+    "RISTRYL": "Ristryl-2.png",
+    "RISTRYL FORTE": "Ristryl-Forte-2.png",
+    "ROXVIT D 60": "Roxvit-D60-2.png",
+    "SENBEST-100": "Senbest-100-1.png",
+    "SENBEST-50": "Senbest-50-2.png",
+    "SENTRACHEM TAB": "Sentrachem-1.png",
+    "SOLPRIWEL 200MG TAB": "Solpriwel-200-1.png",
+    "SOLPRIWEL 50MG TAB": "Solpriwel-50-1.png",
+    "SPINOPRED TAB": "Spinopred-2.png",
+    "VEANA CR 200MG TAB": "Veana-CR-200-2.png",
+    "VEANA CR 300MG TAB": "Veana-CR-300-2.png",
+    "VEANA CR 500MG TAB": "Veana-CR-500-2.png",
+    "ZEROACH 10": "Zeroach-10-2.png",
+    "ZEROACH 5": "Zeroach-5mg-2.png",
+    "ZIMQUINE-100": "Zimquine-100-1.png",
+    "ZIMQUINE-200": "Zimquine-200-1.png",
+    "ZINIP-100": "Zinip-100-1.png",
+    "ZINIP-25": "Zinip-25-3.png",
+    "ZINIP-50": "Zinip-50-1.png",
+    "ZYMAPTIN 100": "Zymaptin-100-1.png",
+    "ZYMAPTIN 300": "Zymaptin-300-2.png",
+    "ZYMAPTIN NT 100": "Zymaptin-NT-100-1.png",
+    "ZYMAPTIN NT 300": "Zymaptin-NT-300-1.png",
+    "DALUS FORTE TAB": "dalus_forte-2-1.png",
+    "DALUS-800 TAB": "dalus-800-1-1.png",
+    "DIEPIRATE 1000MG TAB": "Diepirate_1000_-2-1.png",
+    "DIEPIRATE 250MG TAB": "Diepirate_-_250_-2-1.png",
+    "DIEPIRATE 500MG TAB": "Diepirate-500_-2-1.png",
+    "DIEPIRATE 750MG TAB": "Diepirate-750-_2-1.png",
+    "DIPWELL 5": "Dipwell_-5_-b-2.png",
+    "DIPWELL 10": "dipwell-10-2-1.png",
+    "DIPWELL 20": "Dipwell_20-2-1.png",
+    "DIPWELL LS": "Dipwell_LS_-2-1.png",
+    "DIPWELL PLUS TAB": "dipwell_plus-2-2.png",
+    "DIPWELL-H": "dipwell-H-2-1.png",
+    "DISTRODUL 20": "Dirtrodul_20-2-1.png",
+    "DYCICAL TAB": "dycical-2-1.png",
+    "DYCIPAR MR": "dycipar-mr-1-1.png",
+    "DYCIPAR TAB": "dycipar-3-1.png",
+    "DYCIZOL-40 TAB": "dycizol-40-2-1.png",
+    "DYRICH-NP": "Dyrich_NP_-2.png",
+    "EASOPID 5": "Easopid-5-1.png",
+    "EASOPID 10": "Easopid-10-1.png",
+    "EGEPTIN 16 MG TAB": "Egeptin-16-1.png",
+    "EGEPTIN 24 MG TAB": "Egeptin-24-1.png",
+    "EGEPTIN 8 MG TAB": "Egeptin-8-1.png",
+    "FLEBIXEN 0.5 MG": "Flebixen-0.5.png",
+    "FLEBIXEN 1MG": "Flebixen-1-mg.png",
+    "FLEBIXEN PLUS": "Flebixen-Plus.png",
+    "FREEDONAP 250": "Freedonap_250_-2-1.png",
+    "FREEDONAP 500": "Freedonap_500_-2.png",
+    "HYPOLIN 10 TAB": "Hypolin-10.png",
+    "HYPOLIN 20 TAB": "Hypolin-20.png",
+    "JEROCEN 1 MG": "Jerocen-1-mg.png",
+    "JEROCEN 2 MG": "Jerocen-2-mg.png",
+    "DYRICH FORTE CAPS": "dyrich_forte-4-2.png",
+    "DYCIZOL-DSR CAP": "dycizol-dsr-1-1.png",
+    "DYRICH PLUS": "Dyrich_Plus_-2-1.png",
+    "ESIROMIDE PLUS": "Esiromide-Plus-1.png",
+    "RELIGABA D 50/20": "Religaba-D-50-20-1.png",
+    "RELIGABA D 75/20": "Religaba-D-75-20-1-1.png",
+    "RELIGABA D 75/30": "Religaba-D-75-30-1.png",
+    "ROCACOP": "Rocacop-1.png",
+    "ROCACOP A-10": "Rocacop-A-10-1.png",
+    "ROCACOP A-20": "Rocacop-A-20-1.png",
+    "ROXVIT CAPS": "Roxvit-1.png",
+    "BRAINVOLT SYRUP": "brainvolt-2-1.png",
+    "DALUS SYRUP": "Dalus_Sys-1.png",
+    "DYRICH SYRUP": "Dyrich-Syp.png",
+    "LEVALTY SYRUP": "Levalty-Syp.png",
+    "DALUS 1 GM Injection": "dalus_iv-1mg-1-1.png",
+    "DALUS 500 Injection": "dalus_iv-500_mg-1-1.png",
+    "DYCIPAR INJ": "dycipar-iv-3-1.png",
+    "DYCIZOL IV": "dycizol-iv-3-1.png",
+    "DYRICH INJ": "dyrich-injection-3-1.png",
+    "ELDATOX INJ": "Eldatox-IV-2.png",
+    "GRANEPIP INJ": "Granepip-IV-1.png",
+    "LEVALTY INJ": "Levalty-1.png",
+    "LOGNEMER INJ": "Lognemer-IV-1.png",
+    "SPINOPRED-1000 INJ": "Spinopred-1000-1.png"
+  };
+  // Build a normalized lookup so minor punctuation/spacing differences still match
+  const _norm = s => String(s || '').toUpperCase().replace(/[\s\-\._]+/g, '');
+  const PRODUCT_IMG_MAP = {};
+  for (const k in PRODUCT_IMAGES_RAW) PRODUCT_IMG_MAP[_norm(k)] = _IMG_BASE + PRODUCT_IMAGES_RAW[k];
+  const imgFor = p => PRODUCT_IMG_MAP[_norm(p.name)] || '';
+
+  // ----------------------------------------------------------
   // State
   // ----------------------------------------------------------
   const PER_PAGE = 8;
@@ -367,7 +488,9 @@
       empty.hidden = true;
       grid.innerHTML = slice.map(p => `
         <article class="pcard" data-cat="${p.cat}" data-div="${p.div}">
-          <div class="pcard-img">${CAT_SVG[p.cat] || ''}</div>
+          <div class="pcard-img" data-cat="${p.cat}">${imgFor(p)
+            ? `<img src="${imgFor(p)}" alt="${p.name}" loading="lazy" referrerpolicy="no-referrer" />`
+            : (CAT_SVG[p.cat] || '')}</div>
           <div class="pcard-body">
             <h4 class="pcard-name">${p.name}</h4>
             <dl class="pcard-meta">
@@ -385,6 +508,78 @@
     updateSidebarActive();
     updateTopRowActive();
     updateDivisionActive();
+  }
+
+  // Delegated error handler: swap broken product images with the category SVG fallback
+  grid.addEventListener('error', e => {
+    const img = e.target;
+    if (img.tagName !== 'IMG') return;
+    const wrap = img.parentNode;
+    if (!wrap || !wrap.classList.contains('pcard-img')) return;
+    const cat = wrap.dataset.cat;
+    if (cat && CAT_SVG[cat]) wrap.innerHTML = CAT_SVG[cat];
+  }, true);
+
+  // ----------------------------------------------------------
+  // Product detail modal — opens on card tap, shows big image + data
+  // ----------------------------------------------------------
+  const pmodal     = document.getElementById('pmodal');
+  const pmodalImg  = document.getElementById('pmodal-img');
+  const pmodalName = document.getElementById('pmodal-name');
+  const pmodalMeta = document.getElementById('pmodal-meta');
+
+  function openModal(p) {
+    if (!pmodal || !p) return;
+    const url = imgFor(p);
+    pmodalImg.innerHTML = url
+      ? `<img src="${url}" alt="${p.name}" referrerpolicy="no-referrer" />`
+      : (CAT_SVG[p.cat] || '');
+    pmodalName.textContent = p.name;
+    pmodalMeta.innerHTML = `
+      <dt>Size</dt><dd>${p.size}</dd>
+      <dt>Salt</dt><dd>${p.salt}</dd>
+      <dt>Category</dt><dd>${p.cat}</dd>
+      <dt>Division</dt><dd><span class="pcard-div pcard-div-${p.div}">${p.div}</span></dd>
+    `;
+    pmodal.classList.add('is-open');
+    pmodal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('pmodal-open');
+  }
+  function closeModal() {
+    if (!pmodal) return;
+    pmodal.classList.remove('is-open');
+    pmodal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('pmodal-open');
+  }
+
+  // Card click → find product by name → open modal
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.pcard');
+    if (!card) return;
+    const name = card.querySelector('.pcard-name')?.textContent?.trim();
+    if (!name) return;
+    const p = PRODUCTS.find(x => x.name === name);
+    if (p) openModal(p);
+  });
+
+  // Close handlers
+  if (pmodal) {
+    pmodal.querySelectorAll('[data-pmodal-close]').forEach(el => {
+      el.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && pmodal.classList.contains('is-open')) closeModal();
+    });
+    // Swap broken image inside modal with SVG fallback
+    pmodal.addEventListener('error', e => {
+      const img = e.target;
+      if (img.tagName !== 'IMG') return;
+      const wrap = img.parentNode;
+      if (wrap && wrap.id === 'pmodal-img') {
+        const cat = PRODUCTS.find(p => p.name === pmodalName.textContent)?.cat;
+        if (cat && CAT_SVG[cat]) wrap.innerHTML = CAT_SVG[cat];
+      }
+    }, true);
   }
 
   function renderPagination(totalPages) {

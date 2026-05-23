@@ -71,30 +71,30 @@
   <aside class="products-sidebar">
     <h3 class="products-sidebar-title">CATEGORY</h3>
     <button class="products-sidebar-btn is-active" data-cat="all">
-      <span class="psb-dot"></span> All Products
+      <i class="fa-solid fa-grip psb-icon" aria-hidden="true"></i> All Products
     </button>
     <button class="products-sidebar-btn" data-cat="Tablet">
-      <span class="psb-dot"></span> Tablets
+      <i class="fa-solid fa-tablets psb-icon" aria-hidden="true"></i> Tablets
     </button>
     <button class="products-sidebar-btn" data-cat="Capsule">
-      <span class="psb-dot"></span> Capsules
+      <i class="fa-solid fa-capsules psb-icon" aria-hidden="true"></i> Capsules
     </button>
     <button class="products-sidebar-btn" data-cat="Syrup">
-      <span class="psb-dot"></span> Syrups
+      <i class="fa-solid fa-prescription-bottle psb-icon" aria-hidden="true"></i> Syrups
     </button>
     <button class="products-sidebar-btn" data-cat="Injectable">
-      <span class="psb-dot"></span> Injections
+      <i class="fa-solid fa-syringe psb-icon" aria-hidden="true"></i> Injections
     </button>
 
     <h3 class="products-sidebar-title products-sidebar-title-div">DIVISION</h3>
     <button class="products-sidebar-btn is-active" data-div="all">
-      <span class="psb-dot"></span> All Divisions
+      <i class="fa-solid fa-layer-group psb-icon" aria-hidden="true"></i> All Divisions
     </button>
     <button class="products-sidebar-btn" data-div="AXA">
-      <span class="psb-dot"></span> AXA
+      <i class="fa-solid fa-shield-halved psb-icon" aria-hidden="true"></i> AXA
     </button>
     <button class="products-sidebar-btn" data-div="NURA">
-      <span class="psb-dot"></span> NURA
+      <i class="fa-solid fa-brain psb-icon" aria-hidden="true"></i> NURA
     </button>
   </aside>
 
@@ -114,9 +114,14 @@
   <div class="pagination" id="pagination" aria-label="Pagination"></div>
 </section>
 
-<!-- BIG DECORATIVE NEW PRODUCT INNOVATION -->
+<!-- BIG DECORATIVE PRODUCT INNOVATION -->
 <section class="products-massive products-massive-page" data-theme="dark">
-  <div class="products-massive-text">NEW PRODUCT INNOVATION</div>
+  <div class="products-massive-text">PRODUCT INNOVATION</div>
+  <a class="products-chevron" href="index.html#all-products" aria-label="Back to ALL DYCINE PRODUCTS on home page">
+    <svg class="products-chevron-svg" width="113" height="42" viewBox="0 0 113 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M1 2L57.5039 40.5L112 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </a>
 </section>
 
 <!-- FOOTER -->
@@ -180,6 +185,21 @@
 
   <div class="footer-massive">DYCINE PHARMA</div>
 </section>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="pmodal" id="pmodal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="pmodal-backdrop" data-pmodal-close></div>
+  <div class="pmodal-card" role="document">
+    <button type="button" class="pmodal-close" data-pmodal-close aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="pmodal-img" id="pmodal-img"></div>
+    <div class="pmodal-body">
+      <h3 class="pmodal-name" id="pmodal-name"></h3>
+      <dl class="pmodal-meta" id="pmodal-meta"></dl>
+    </div>
+  </div>
+</div>
 
 <script src="main.js"></script>
 <script src="products.js"></script>
