@@ -419,20 +419,15 @@
   // Sidebar / top row category bindings
   // ----------------------------------------------------------
   function updateSidebarActive() {
-    document.querySelectorAll('.products-sidebar-btn').forEach(b => {
+    document.querySelectorAll('.products-sidebar-btn[data-cat]').forEach(b => {
       b.classList.toggle('is-active', b.dataset.cat === activeCat);
     });
-  }
-  function updateTopRowActive() {
-    document.querySelectorAll('.products-cat-row-btn').forEach(b => {
-      b.classList.toggle('is-active', b.dataset.cat === activeCat);
-    });
-  }
-  function updateDivisionActive() {
-    document.querySelectorAll('.division-pill').forEach(b => {
+    document.querySelectorAll('.products-sidebar-btn[data-div]').forEach(b => {
       b.classList.toggle('is-active', b.dataset.div === activeDiv);
     });
   }
+  function updateTopRowActive() { /* no top row anymore */ }
+  function updateDivisionActive() { /* handled in updateSidebarActive */ }
 
   function setCat(cat) {
     activeCat = cat;
@@ -446,13 +441,10 @@
     render();
   }
 
-  document.querySelectorAll('.products-sidebar-btn').forEach(b => {
+  document.querySelectorAll('.products-sidebar-btn[data-cat]').forEach(b => {
     b.addEventListener('click', () => setCat(b.dataset.cat));
   });
-  document.querySelectorAll('.products-cat-row-btn').forEach(b => {
-    b.addEventListener('click', () => setCat(b.dataset.cat));
-  });
-  document.querySelectorAll('.division-pill').forEach(b => {
+  document.querySelectorAll('.products-sidebar-btn[data-div]').forEach(b => {
     b.addEventListener('click', () => setDiv(b.dataset.div));
   });
 
