@@ -29,7 +29,7 @@
      ============================================ -->
 <a href="#hero" class="logo-card" aria-label="Dycine Pharma Home">
   <img src="assets/logo-light.png" alt="Dycine Pharma" class="logo-color" />
-  <img src="assets/logo-dark.png" alt="Dycine Pharma" class="logo-white" />
+  <img src="uploads/Dycine%20(Place%20it%20on%20dark%20blue).png" alt="Dycine Pharma" class="logo-white" />
 </a>
 
 <!-- ============================================
@@ -50,7 +50,13 @@
       <a href="products.html?cat=Injectable" class="nav-link nav-sublink"><i class="fa-solid fa-syringe"></i>Injectables</a>
     </div>
     <a href="#capabilities" class="nav-link" data-target="capabilities"><i class="fa-solid fa-industry"></i>Capabilities</a>
-    <a href="https://dycinepharma.in/media-events/news-room/" class="nav-link" target="_blank"><i class="fa-solid fa-newspaper"></i>News</a>
+    <div class="nav-dropdown">
+      <button class="nav-link nav-dropdown-trigger"><i class="fa-solid fa-newspaper"></i>News<i class="fa-solid fa-chevron-down nav-chevron"></i></button>
+      <div class="nav-dropdown-menu">
+        <a href="press-releases.html" class="nav-dropdown-item"><i class="fa-solid fa-bullhorn"></i>Press Release</a>
+        <a href="https://dycinepharma.in/media-events/news-room/" class="nav-dropdown-item" target="_blank"><i class="fa-solid fa-newspaper"></i>News Room</a>
+      </div>
+    </div>
     <div class="nav-dropdown">
       <button class="nav-link nav-dropdown-trigger"><i class="fa-solid fa-right-to-bracket"></i>Sign In<i class="fa-solid fa-chevron-down nav-chevron"></i></button>
       <div class="nav-dropdown-menu">
@@ -442,10 +448,10 @@
             </div>
           </div>
         </div>
-        <div class="cap-hero-vid" aria-hidden="true">
-          <div class="cap-hero-vid-ring"></div>
-          <div class="cap-hero-vid-ring cap-hero-vid-ring-2"></div>
-          <video src="uploads/v&t-sequence-2.webm" autoplay loop muted playsinline preload="auto"></video>
+        <div class="cap-manuf-collage" aria-hidden="true">
+          <img src="uploads/manuf-1.jpeg" alt="Dycine Pharma facility — granulation line" class="cmc-img cmc-img-1" loading="lazy" />
+          <img src="uploads/manuf-2.jpeg" alt="Dycine Pharma facility — operators sieving" class="cmc-img cmc-img-2" loading="lazy" />
+          <img src="uploads/manuf-3.jpeg" alt="Dycine Pharma facility — Smartcoater operation" class="cmc-img cmc-img-3" loading="lazy" />
         </div>
       </div>
 
@@ -481,35 +487,39 @@
         From GMP and WHO-GMP to ISO standards and CDSCO licensing, our certifications reflect a relentless commitment to quality, safety, and global regulatory compliance, from raw material sourcing through final packaging.
       </p>
 
-      <div class="cert-grid">
-        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-PHARMA-106.pdf" target="_blank" rel="noopener" aria-label="View WHO-GMP Certificate (PDF)">
-          <div class="cert-thumb"><img src="uploads/cert-1.jpg" alt="" loading="lazy" /></div>
-          <div class="cert-meta">
-            <div class="cert-name">WHO-GMP Certificate</div>
-            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
-          </div>
-        </a>
-        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-109.pdf" target="_blank" rel="noopener" aria-label="View ISO 9001:2015 Certificate (PDF)">
-          <div class="cert-thumb"><img src="uploads/cert-2.jpg" alt="" loading="lazy" /></div>
-          <div class="cert-meta">
-            <div class="cert-name">ISO 9001:2015</div>
-            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
-          </div>
-        </a>
-        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-108.pdf" target="_blank" rel="noopener" aria-label="View GMP Certificate (PDF)">
-          <div class="cert-thumb"><img src="uploads/cert-3.jpg" alt="" loading="lazy" /></div>
-          <div class="cert-meta">
-            <div class="cert-name">GMP Certificate</div>
-            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
-          </div>
-        </a>
-        <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-1102.pdf" target="_blank" rel="noopener" aria-label="View CDSCO License (PDF)">
-          <div class="cert-thumb"><img src="uploads/cert-4.jpg" alt="" loading="lazy" /></div>
-          <div class="cert-meta">
-            <div class="cert-name">CDSCO License</div>
-            <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
-          </div>
-        </a>
+      <div class="cert-slider">
+        <button class="cert-slider-btn cert-slider-prev" type="button" aria-label="Previous certificates"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="cert-slider-btn cert-slider-next" type="button" aria-label="Next certificates"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="cert-grid" id="cert-grid">
+          <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-PHARMA-106.pdf" target="_blank" rel="noopener" aria-label="View WHO-GMP Certificate (PDF)">
+            <div class="cert-thumb"><img src="uploads/cert-1.jpg" alt="" loading="lazy" /></div>
+            <div class="cert-meta">
+              <div class="cert-name">WHO-GMP Certificate</div>
+              <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+            </div>
+          </a>
+          <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-109.pdf" target="_blank" rel="noopener" aria-label="View ISO 9001:2015 Certificate (PDF)">
+            <div class="cert-thumb"><img src="uploads/cert-2.jpg" alt="" loading="lazy" /></div>
+            <div class="cert-meta">
+              <div class="cert-name">ISO 9001:2015</div>
+              <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+            </div>
+          </a>
+          <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-108.pdf" target="_blank" rel="noopener" aria-label="View GMP Certificate (PDF)">
+            <div class="cert-thumb"><img src="uploads/cert-3.jpg" alt="" loading="lazy" /></div>
+            <div class="cert-meta">
+              <div class="cert-name">GMP Certificate</div>
+              <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+            </div>
+          </a>
+          <a class="cert-card" href="https://dycinepharma.in/wp-content/uploads/2025/11/DYCINE-1102.pdf" target="_blank" rel="noopener" aria-label="View CDSCO License (PDF)">
+            <div class="cert-thumb"><img src="uploads/cert-4.jpg" alt="" loading="lazy" /></div>
+            <div class="cert-meta">
+              <div class="cert-name">CDSCO License</div>
+              <span class="cert-dl" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -760,7 +770,7 @@
     </div>
     <div class="footer-bottom-right">
       <a href="#hero" aria-label="Dycine Pharma" class="flogo-wrap">
-        <img src="assets/logo-footer.png" alt="Dycine Pharma" />
+        <img src="assets/logo-dark.png" alt="Dycine Pharma" />
       </a>
     </div>
   </div>

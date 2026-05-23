@@ -830,6 +830,32 @@ window.addEventListener('load', () => {
 })();
 
 /* =========================
+   Certifications slider: arrow nav + disabled state at scroll ends
+   ========================= */
+(() => {
+  const grid = document.getElementById('cert-grid');
+  const prev = document.querySelector('.cert-slider-prev');
+  const next = document.querySelector('.cert-slider-next');
+  if (!grid || !prev || !next) return;
+  const scrollAmount = () => {
+    const card = grid.querySelector('.cert-card');
+    if (!card) return 280;
+    const cardWidth = card.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(grid).gap) || 24;
+    return cardWidth + gap;
+  };
+  const updateButtons = () => {
+    prev.disabled = grid.scrollLeft <= 2;
+    next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 2;
+  };
+  prev.addEventListener('click', () => grid.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+  next.addEventListener('click', () => grid.scrollBy({ left:  scrollAmount(), behavior: 'smooth' }));
+  grid.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+  updateButtons();
+})();
+
+/* =========================
    Video playback: only play section videos when scrolled into view.
    Hero stays always-on. Reduces simultaneous decoders so videos run smoothly.
    ========================= */
