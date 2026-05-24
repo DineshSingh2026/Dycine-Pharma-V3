@@ -779,7 +779,7 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.about-tab-container').forEach(container => {
     const section = container.closest('section');
     if (!section) return;
-    const tabs   = section.querySelectorAll('.about-tab[data-tab]');
+    const tabs   = section.querySelectorAll('[data-tab]');
     const panels = container.querySelectorAll('.about-panel[data-panel]');
     if (!tabs.length || !panels.length) return;
 
@@ -883,34 +883,12 @@ window.addEventListener('load', () => {
 })();
 
 // ----------------------------------------------------------
-// Careers section — reveal on "Work with us", close on X
+// Careers form submit — composes a mailto with the entered data
 // ----------------------------------------------------------
 (() => {
-  const section = document.getElementById('careers');
-  const form    = document.getElementById('careers-form');
-  if (!section) return;
-
-  const open = () => {
-    section.classList.add('is-open');
-    section.setAttribute('aria-hidden', 'false');
-    requestAnimationFrame(() => {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  };
-  const close = () => {
-    section.classList.remove('is-open');
-    section.setAttribute('aria-hidden', 'true');
-  };
-
-  document.querySelectorAll('[data-careers-open]').forEach(el => {
-    el.addEventListener('click', e => { e.preventDefault(); open(); });
-  });
-  document.querySelectorAll('[data-careers-close]').forEach(el => {
-    el.addEventListener('click', close);
-  });
-
-  if (form) {
-    form.addEventListener('submit', e => {
+  const form = document.getElementById('careers-form');
+  if (!form) return;
+  form.addEventListener('submit', e => {
       e.preventDefault();
       const fd = new FormData(form);
       const lines = [
@@ -925,6 +903,5 @@ window.addEventListener('load', () => {
       const subject = `Job Application — ${fd.get('position') || 'General'}`;
       const body    = encodeURIComponent(lines.join('\n'));
       window.location.href = `mailto:Hrd@dycinepharma.in?subject=${encodeURIComponent(subject)}&body=${body}`;
-    });
-  }
+  });
 })();
