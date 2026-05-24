@@ -407,8 +407,6 @@ section {
   flex-wrap: wrap;
 }
 .hero-eyebrow-row .eyebrow { opacity: 0.85; }
-.trial-eyebrow { display: inline-flex; align-items: center; gap: 10px; }
-.trial-eyebrow .blink { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan-500); display: inline-block; }
 .pill {
   display: inline-flex;
   align-items: center;
@@ -546,9 +544,11 @@ section {
   pointer-events: auto;
 }
 
-/* Label above the 4-stat burden block in Set B */
+/* Label inside the burden grid, sits below the divider line and spans
+   the whole row above the four stats */
 .hero-stats-label {
-  margin-top: 48px;
+  grid-column: 1 / -1;
+  margin-bottom: 16px;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -558,9 +558,6 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-}
-.hero-stats-label + .hero-stats {
-  margin-top: 12px;
 }
 .hero-stats-label i { font-size: 12px; opacity: 0.8; }
 
@@ -1766,6 +1763,25 @@ video.img {
   opacity: 0.7;
   margin-bottom: 8px;
 }
+.slide .trial-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan-500);
+  margin: 0 0 14px;
+}
+.slide .trial-status .blink {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan-500);
+  display: inline-block;
+}
 .slide h3 {
   font-weight: 700;
   font-size: clamp(28px, 3.4vw, 48px);
@@ -1940,9 +1956,10 @@ video.img {
   .products-massive-text {
     font-size: clamp(22px, 8.5vw, 40px);
     letter-spacing: -0.035em;
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: normal;
+    overflow: visible;
     text-overflow: clip;
+    word-break: keep-all;
   }
   .products-chevron-svg { width: 72px; }
 }
@@ -2518,6 +2535,24 @@ video.img {
 }
 .footer ul a:hover { color: var(--cyan-500); opacity: 1; }
 
+/* Sitemap sub-items (Press Release / News Room under News, Employees / HR
+   under Sign In). Smaller, dimmer, indented. */
+.footer ul .footer-sublist {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 1px solid rgba(250,250,250,0.12);
+}
+.footer ul .footer-sublist li { margin: 0; }
+.footer ul .footer-sublist a {
+  font-size: 14px;
+  opacity: 0.65;
+}
+.footer ul .footer-sublist a:hover { opacity: 1; }
+
 .footer-certs {
   max-width: 1500px;
   margin: 22px auto 0;
@@ -2812,6 +2847,16 @@ video.img {
     color: var(--navy-900);
     border-radius: 10px;
     background: rgba(0,180,216,0.06);
+  }
+  /* News dropdown in mobile: hide the expanded menu + chevron — News
+     acts as a direct link to news-room.html instead */
+  .top-nav.is-open .news-dropdown .nav-dropdown-menu,
+  .nav-links.is-teleported .news-dropdown .nav-dropdown-menu {
+    display: none !important;
+  }
+  .top-nav.is-open .news-dropdown .nav-chevron,
+  .nav-links.is-teleported .news-dropdown .nav-chevron {
+    display: none !important;
   }
   /* Mobile: dark translucent gradient for readability — ABOVE the video */
   .hero::before {

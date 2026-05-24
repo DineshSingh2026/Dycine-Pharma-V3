@@ -918,6 +918,25 @@ window.addEventListener('load', () => {
 })();
 
 // ----------------------------------------------------------
+// #contact-careers hash → scroll to contact section and click the
+// "Work with us" tab. Lets footer "Work with us" link land on the
+// right panel from any page.
+// ----------------------------------------------------------
+function openCareersTabFromHash() {
+  if (location.hash !== '#contact-careers') return;
+  const tab = document.querySelector('.contact-cta[data-tab="careers"]');
+  const contact = document.getElementById('contact');
+  if (contact) {
+    contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  if (tab) {
+    setTimeout(() => tab.click(), 120);
+  }
+}
+window.addEventListener('load', openCareersTabFromHash);
+window.addEventListener('hashchange', openCareersTabFromHash);
+
+// ----------------------------------------------------------
 // Careers form submit — composes a mailto with the entered data
 // ----------------------------------------------------------
 (() => {
