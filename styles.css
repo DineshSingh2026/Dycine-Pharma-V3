@@ -508,7 +508,6 @@ section {
   color: #fff;
   box-shadow: 0 8px 24px rgba(0,180,216,0.32);
 }
-.btn-primary .arr { color: #fff; }
 .btn:hover {
   background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 100%);
   color: #fff;
@@ -522,6 +521,7 @@ section {
 }
 .btn .arr { color: var(--cyan-500); transition: color .3s, transform .25s; }
 .btn:hover .arr { color: #fff; transform: translateX(4px); }
+.btn-primary .arr { color: #fff; }
 .btn-primary:hover .arr { transform: translateX(4px); }
 
 .hero-stats {
