@@ -503,23 +503,26 @@ section {
   color: inherit;
 }
 .btn-primary {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(0,180,216,0.45);
-  color: var(--paper);
-  box-shadow: none;
+  background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,180,216,0.32);
 }
-.btn:hover,
-.btn-primary:hover {
+.btn-primary .arr { color: #fff; }
+.btn:hover {
   background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 100%);
   color: #fff;
   border-color: transparent;
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0,180,216,0.45);
 }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,180,216,0.45);
+}
 .btn .arr { color: var(--cyan-500); transition: color .3s, transform .25s; }
-.btn:hover .arr { color: #fff; }
-.btn .arr { transition: transform .25s; }
-.btn:hover .arr { transform: translateX(4px); }
+.btn:hover .arr { color: #fff; transform: translateX(4px); }
+.btn-primary:hover .arr { transform: translateX(4px); }
 
 .hero-stats {
   display: grid;
@@ -2868,10 +2871,7 @@ video.img {
     color: var(--cyan-500);
     box-shadow: none;
     white-space: nowrap;
-    text-shadow:
-      0 0 6px rgba(255,255,255,0.8),
-      0 0 2px rgba(255,255,255,0.8),
-      0 0 8px rgba(3,4,94,0.4);
+    text-shadow: none;
   }
   .sidenav a:hover .sn-label,
   .sidenav a:active .sn-label,

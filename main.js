@@ -114,7 +114,7 @@ document.addEventListener('click', e => {
 // ----------------------------------------------------------
 // 2) Hero rotating phrase — ghost-sizer approach
 // ----------------------------------------------------------
-const ROTATOR_WORDS = ['save lives', 'improve health', 'make cures'];
+const ROTATOR_WORDS = ['cure', 'save lives', 'improve health'];
 
 function initRotator() {
   const r = document.querySelector('.rotator');
