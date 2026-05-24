@@ -114,7 +114,7 @@ document.addEventListener('click', e => {
 // ----------------------------------------------------------
 // 2) Hero rotating phrase — ghost-sizer approach
 // ----------------------------------------------------------
-const ROTATOR_WORDS = ['cure', 'save lives', 'improve health'];
+const ROTATOR_WORDS = ['cure', 'improve health', 'save lives'];
 
 function initRotator() {
   const r = document.querySelector('.rotator');
@@ -439,8 +439,8 @@ let carTimer = null;
 
 // Product names + icons for tabs
 const PRODUCT_NAMES = [
-  { name: 'Epregress Syrup', icon: 'fa-solid fa-prescription-bottle' },
   { name: 'ASV Tablet', icon: 'fa-solid fa-tablets' },
+  { name: 'Epregress Syrup', icon: 'fa-solid fa-prescription-bottle' },
   { name: 'ASV Testing Kit', icon: 'fa-solid fa-vial' },
 ];
 

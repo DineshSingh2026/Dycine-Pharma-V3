@@ -3185,15 +3185,14 @@ video.img {
 .products-page .footer { padding: 80px 6vw 32px; padding-right: 6vw; }
 
 /* Page-active nav state */
-.nav-link.is-active-page {
-  background: var(--cyan-500);
-  color: var(--navy-900);
-}
-.nav-link.is-active-page i { color: var(--navy-900); opacity: 1; }
+.nav-link.is-active-page,
 .top-nav.is-hero .nav-link.is-active-page {
-  background: var(--cyan-500);
-  color: var(--navy-900);
+  background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 60%, #023E8A 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,180,216,0.30);
 }
+.nav-link.is-active-page i,
+.top-nav.is-hero .nav-link.is-active-page i { color: #ffffff; opacity: 1; }
 
 /* Hero */
 .products-hero {
