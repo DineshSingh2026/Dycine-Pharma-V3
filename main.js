@@ -40,13 +40,6 @@ function updateActiveNav() {
   if (topNav) {
     topNav.classList.toggle('is-hero', active.id === 'hero');
   }
-  // Toggle logo card between white (hero) and colored (other sections)
-  const logoCard = document.querySelector('.logo-card');
-  if (logoCard) {
-    // Use white logo on any dark-themed section, colored logo on light-themed sections
-    const isDark = (active.dataset.theme || 'light') === 'dark';
-    logoCard.classList.toggle('is-hero', isDark);
-  }
   const theme = active.dataset.theme || 'light';
   setTheme(theme);
 }

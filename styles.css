@@ -85,44 +85,13 @@ img, svg, video { display: block; max-width: 100%; }
   transition: transform .35s cubic-bezier(.2,.7,.2,1), background .4s, border-color .4s, box-shadow .4s, backdrop-filter .4s;
 }
 .logo-card:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 8px rgba(3,4,94,0.1), 0 28px 56px -12px rgba(3,4,94,0.4); }
-.logo-card img { width: 100%; height: auto; display: block; }
-/* Two logos overlaid — adaptive swap based on section's theme.
-   logo-color (dark text)  ➜ visible on LIGHT sections
-   logo-white (white text) ➜ visible on DARK sections */
-.logo-card { position: fixed; width: 200px; }
-.logo-card .logo-color,
-.logo-card .logo-white {
+.logo-card img {
   width: 100%;
   height: auto;
-  transition: opacity .45s ease;
-}
-.logo-card .logo-color {
-  position: relative;
-  opacity: 1;
-}
-.logo-card .logo-white {
-  position: absolute;
-  top: 0; left: 0;
-  opacity: 0;
-}
-/* Body data-theme is set by JS based on the active section.
-   On dark sections → flip to the white-text logo.
-   !important guards against any inherited opacity rule. */
-body[data-theme="dark"] .logo-card .logo-color,
-.logo-card.is-hero .logo-color { opacity: 0 !important; }
-body[data-theme="dark"] .logo-card .logo-white,
-.logo-card.is-hero .logo-white { opacity: 1 !important; }
-body[data-theme="light"] .logo-card .logo-color { opacity: 1 !important; }
-body[data-theme="light"] .logo-card .logo-white { opacity: 0 !important; }
-
-/* Hero-mode: matches top-nav hero style */
-/* No box on the logo card in any state — logo floats directly on the page */
-.logo-card.is-hero {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-color: transparent;
-  box-shadow: none;
+  display: block;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
 }
 
 /* gentle drift / pulse on the floating card */
