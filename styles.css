@@ -2378,6 +2378,7 @@ video.img {
   .footer-bottom-row .footer-bottom-right .flogo-wrap img {
     max-width: 240px;
   }
+  .footer-massive { margin-top: 24px; }
 }
 @media (max-width: 480px) {
   .footer-grid.footer-grid-3col {
@@ -3967,11 +3968,17 @@ body.pmodal-open { overflow: hidden; }
 /* ============================================
    PRESS RELEASES PAGE
    ============================================ */
-.press-hero {
-  padding: 100px 6vw 24px;
+/* Override global `section { min-height: 100vh }` so press/news sections size
+   to their content. Per-section padding stays via the rules below. */
+.press-page section {
+  min-height: 0;
+  padding: 0;
+}
+.press-page .press-hero {
+  padding: 100px 6vw 48px;
 }
 .press-page .products-massive-page {
-  padding: 28px 4vw 30px;
+  padding: 56px 4vw 56px;
   margin-top: 0;
 }
 .press-page .products-massive-page .products-chevron { margin-top: 10px; }
@@ -3985,9 +3992,9 @@ body.pmodal-open { overflow: hidden; }
   color: rgba(255,255,255,0.78);
   font-weight: 400;
 }
-.press-main {
+.press-page .press-main {
   background: #f6f9fc;
-  padding: 32px 6vw 80px;
+  padding: 56px 6vw 96px;
 }
 .press-wrap {
   max-width: 1200px;
@@ -4088,7 +4095,7 @@ body.pmodal-open { overflow: hidden; }
   gap: 14px;
 }
 @media (max-width: 720px) {
-  .press-main { padding: 50px 5vw 70px; }
+  .press-page .press-main { padding: 50px 5vw 70px; }
   .press-grid { grid-template-columns: 1fr; gap: 20px; }
   .press-card-thumb { height: 150px; font-size: 52px; }
   .press-card-title { font-size: 18px; }
