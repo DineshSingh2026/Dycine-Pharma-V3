@@ -112,15 +112,21 @@ document.addEventListener('click', e => {
 });
 
 // ----------------------------------------------------------
-// 2) Hero rotating phrase — ghost-sizer approach
+// 2) Hero loop — Set A (rotator: cure / improve health / save lives)
+//    cycles through all three words, then Set B (snakebite antidote)
+//    appears for SET_B_MS, then loops back to Set A.
 // ----------------------------------------------------------
 const ROTATOR_WORDS = ['cure', 'improve health', 'save lives'];
+const WORD_MS  = 2600;  // each rotator word's hold time
+const SET_B_MS = 18000;  // how long Set B stays visible before looping
 
 function initRotator() {
-  const r = document.querySelector('.rotator');
+  const r    = document.querySelector('.hero-set-a .rotator');
+  const setA = document.querySelector('.hero-set-a');
+  const setB = document.querySelector('.hero-set-b');
   if (!r) return;
 
-  // Ghost sizer — invisible but occupies space, sets rotator width + height
+  // Build the rotator's ghost sizer + animated word spans
   const widest = ROTATOR_WORDS.reduce((a, b) => a.length > b.length ? a : b);
   const ghost = document.createElement('span');
   ghost.textContent = widest;
@@ -128,7 +134,6 @@ function initRotator() {
   ghost.setAttribute('aria-hidden', 'true');
   r.appendChild(ghost);
 
-  // Animated word spans
   const spans = ROTATOR_WORDS.map(w => {
     const s = document.createElement('span');
     s.textContent = w;
@@ -138,6 +143,9 @@ function initRotator() {
 
   let idx = 0;
   let prev = -1;
+  let timers = [];
+
+  const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
 
   function render() {
     spans.forEach((s, k) => {
@@ -156,12 +164,28 @@ function initRotator() {
       }
     });
   }
-  render();
-  setInterval(() => {
-    prev = idx;
-    idx = (idx + 1) % spans.length;
+
+  function step(p, n) { prev = p; idx = n; render(); }
+
+  function showSetA() {
+    if (setB) setB.classList.remove('is-active');
+    if (setA) setA.classList.add('is-active');
+    clearTimers();
+    idx = 0; prev = -1;
     render();
-  }, 2600);
+    timers.push(setTimeout(() => step(0, 1), WORD_MS));        // → improve health
+    timers.push(setTimeout(() => step(1, 2), WORD_MS * 2));    // → save lives
+    timers.push(setTimeout(showSetB,         WORD_MS * 3));    // → Set B
+  }
+
+  function showSetB() {
+    if (setA) setA.classList.remove('is-active');
+    if (setB) setB.classList.add('is-active');
+    clearTimers();
+    timers.push(setTimeout(showSetA, SET_B_MS));
+  }
+
+  showSetA();
 }
 
 // ----------------------------------------------------------
@@ -493,6 +517,17 @@ function resetCarTimer() {
 }
 $('.car-prev')?.addEventListener('click', () => setSlide(curIdx - 1));
 $('.car-next')?.addEventListener('click', () => setSlide(curIdx + 1));
+
+// "Explore Our Science" CTA — force the carousel to slide 0 (ASV trial card)
+// and smooth-scroll the products section into view
+document.querySelectorAll('[data-go-asv]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    setSlide(0);
+    const target = document.getElementById('products');
+    if (target) window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+  });
+});
 
 // Touch swipe on product stage
 const stage = $('.product-stage');
