@@ -177,8 +177,59 @@ img, svg, video { display: block; max-width: 100%; }
 .top-nav.is-hero .nav-link.is-active i { color: #ffffff; opacity: 1; }
 .nav-link i { font-size: 14px; opacity: 0.7; }
 
-/* Products subcategory submenu — hidden everywhere (Products is a single nav link) */
-.nav-products-submenu { display: none !important; }
+/* Products dropdown submenu — hover-revealed on desktop (like the News dropdown).
+   Hidden on mobile via the ≤820px media query, where Products is a direct link. */
+.nav-products-submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 190px;
+  padding: 6px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(18px) saturate(1.8);
+  -webkit-backdrop-filter: blur(18px) saturate(1.8);
+  border: 1px solid rgba(18,18,18,0.08);
+  border-radius: 14px;
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .25s, visibility .25s, transform .25s cubic-bezier(.22,1,.36,1);
+  z-index: 60;
+}
+.products-dropdown:hover .nav-products-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.products-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+/* Submenu items styled like dropdown items (dark text on the white menu),
+   overriding the horizontal nav-link + is-hero white styles. */
+.top-nav .nav-products-submenu .nav-sublink {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: rgba(18,18,18,0.7);
+  background: transparent;
+  box-shadow: none;
+}
+.top-nav .nav-products-submenu .nav-sublink i {
+  color: var(--cyan-500);
+  opacity: 0.9;
+  width: 18px;
+  text-align: center;
+}
+.top-nav .nav-products-submenu .nav-sublink:hover {
+  background: var(--cyan-500);
+  color: var(--navy-900);
+  box-shadow: none;
+  transform: none;
+}
+.top-nav .nav-products-submenu .nav-sublink:hover i { color: var(--navy-900); opacity: 1; }
 
 /* Mobile menu logo — only visible inside the open burger menu */
 .mobile-menu-logo { display: none; }
@@ -2772,13 +2823,12 @@ video.img {
     display: flex;
     flex-direction: column;
   }
-  /* Products submenu - visible inline on mobile only */
+  /* Mobile: Products is a direct link — hide the submenu + its chevron. */
   .nav-products-submenu {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 4px 0 4px 16px;
+    display: none;
+  }
+  .products-dropdown .nav-chevron {
+    display: none !important;
   }
   .top-nav.is-open .nav-products-submenu .nav-sublink,
   .nav-links.is-teleported .nav-products-submenu .nav-sublink {
@@ -4390,9 +4440,9 @@ body.pmodal-open { overflow: hidden; }
   z-index: 1;
 }
 .article-hero .products-hero-inner { position: relative; z-index: 2; }
-.article-hero-1 { background-image: url("uploads/gmp.webp"); }
+/* article-hero-1 (GMP) & article-hero-3 (AI): background image removed —
+   they fall back to the .products-hero blue gradient + ::before overlay. */
 .article-hero-2 { background-image: url("uploads/awward.webp"); }
-.article-hero-3 { background-image: url("uploads/AI.webp"); }
 .article-meta-row {
   display: flex;
   flex-wrap: wrap;

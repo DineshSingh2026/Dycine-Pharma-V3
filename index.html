@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 
 <link rel="preload" as="image" href="assets/partner-antigenika.png" />
 <link rel="preload" as="image" href="assets/partner-toxiven.png" />
@@ -44,12 +44,14 @@
     </div>
     <a href="#hero" class="nav-link" data-target="hero"><i class="fa-solid fa-house"></i>Home</a>
     <a href="#about" class="nav-link" data-target="about"><i class="fa-solid fa-building"></i>About Us</a>
-    <a href="products.html" class="nav-link" data-target="products"><i class="fa-solid fa-flask-vial"></i>Products</a>
-    <div class="nav-products-submenu">
-      <a href="products.html?cat=Tablet" class="nav-link nav-sublink"><i class="fa-solid fa-tablets"></i>Tablets</a>
-      <a href="products.html?cat=Capsule" class="nav-link nav-sublink"><i class="fa-solid fa-capsules"></i>Capsules</a>
-      <a href="products.html?cat=Syrup" class="nav-link nav-sublink"><i class="fa-solid fa-prescription-bottle"></i>Syrups</a>
-      <a href="products.html?cat=Injectable" class="nav-link nav-sublink"><i class="fa-solid fa-syringe"></i>Injectables</a>
+    <div class="nav-dropdown products-dropdown">
+      <a href="products.html" class="nav-link" data-target="products"><i class="fa-solid fa-flask-vial"></i>Products<i class="fa-solid fa-chevron-down nav-chevron"></i></a>
+      <div class="nav-products-submenu">
+        <a href="products.html?cat=Tablet" class="nav-link nav-sublink"><i class="fa-solid fa-tablets"></i>Tablets</a>
+        <a href="products.html?cat=Capsule" class="nav-link nav-sublink"><i class="fa-solid fa-capsules"></i>Capsules</a>
+        <a href="products.html?cat=Syrup" class="nav-link nav-sublink"><i class="fa-solid fa-prescription-bottle"></i>Syrups</a>
+        <a href="products.html?cat=Injectable" class="nav-link nav-sublink"><i class="fa-solid fa-syringe"></i>Injectables</a>
+      </div>
     </div>
     <a href="#capabilities" class="nav-link" data-target="capabilities"><i class="fa-solid fa-industry"></i>Capabilities</a>
     <div class="nav-dropdown news-dropdown">
@@ -106,7 +108,7 @@
     <!-- ===== SET A — default (improve health rotator) ===== -->
     <div class="hero-set hero-set-a is-active">
       <div class="hero-eyebrow-row">
-        <span class="eyebrow"><i class="fa-solid fa-atom"></i> Est. 2008 &nbsp;·&nbsp; Pharmaceutical Sciences</span>
+        <span class="eyebrow"><i class="fa-solid fa-atom"></i> Est. 2010 &nbsp;·&nbsp; Pharmaceutical Sciences</span>
       </div>
 
       <h1 class="display">
@@ -139,7 +141,7 @@
     <!-- ===== SET B — snakebite antidote focus ===== -->
     <div class="hero-set hero-set-b">
       <div class="hero-eyebrow-row">
-        <span class="eyebrow"><i class="fa-solid fa-atom"></i> Est. 2008</span>
+        <span class="eyebrow"><i class="fa-solid fa-atom"></i> Est. 2010</span>
         <span class="pill"><span class="blink"></span>Moving into first-in-human trials</span>
       </div>
 
@@ -819,7 +821,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© 2008 — 2026 Dycine Pharma Pvt. Ltd. All rights reserved.</div>
+        <div>© 2010 — 2026 Dycine Pharma Pvt. Ltd. All rights reserved.</div>
       </div>
     </div>
     <div class="footer-bottom-right">
@@ -875,6 +877,6 @@
   <circle class="sv-dot sv-dot-4" r="3.5" fill="#00B4D8" opacity="0.2" />
 </svg>
 
-<script src="main.js?v=7"></script>
+<script src="main.js?v=8"></script>
 </body>
 </html>

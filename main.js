@@ -91,10 +91,20 @@ navLinks.forEach(a => a.addEventListener('click', e => {
   });
   window.addEventListener('resize', syncTeleport);
 })();
-$('.nav-dropdown-trigger')?.addEventListener('click', e => {
-  e.stopPropagation();
-  e.preventDefault();
-  $('.nav-dropdown')?.classList.toggle('is-open');
+// Dropdown triggers (News + Sign In). Bind to ALL triggers, not just the first.
+// The News trigger is an <a href="news-room.html">: on mobile its submenu is
+// hidden, so let it navigate to the News page instead of toggling a dropdown.
+$$('.nav-dropdown-trigger').forEach(trigger => {
+  trigger.addEventListener('click', e => {
+    const isMobile = window.matchMedia('(max-width: 820px)').matches;
+    if (trigger.tagName === 'A' && isMobile) return; // follow the href
+    e.stopPropagation();
+    e.preventDefault();
+    const dd = trigger.closest('.nav-dropdown');
+    const willOpen = !dd?.classList.contains('is-open');
+    $$('.nav-dropdown').forEach(d => d.classList.remove('is-open')); // close others
+    if (willOpen) dd?.classList.add('is-open');
+  });
 });
 document.addEventListener('click', e => {
   const nav = $('.top-nav');
@@ -107,8 +117,10 @@ document.addEventListener('click', e => {
       window.dispatchEvent(new Event('resize'));
     }
   }
-  const dd = $('.nav-dropdown');
-  if (dd && !dd.contains(e.target)) dd.classList.remove('is-open');
+  // close any open dropdown when clicking outside it
+  $$('.nav-dropdown').forEach(dd => {
+    if (!dd.contains(e.target)) dd.classList.remove('is-open');
+  });
 });
 
 // ----------------------------------------------------------
