@@ -76,16 +76,48 @@
   </div>
 </section>
 
-<!-- FEATURED PRODUCT INNOVATION -->
-<section class="products-feature" data-theme="dark">
+<!-- FEATURED PRODUCT INNOVATION — same carousel as homepage -->
+<section class="products" data-theme="dark">
   <div class="carousel">
-    <div class="feature-stage">
+    <div class="product-stage">
+      <!-- Slide 1: VenoShield — clinical trial update -->
       <div class="slide is-active">
+        <video class="img" src="uploads/v&t-sequence-2.webm" autoplay loop muted playsinline></video>
+        <div class="grad"></div>
+        <div class="copy">
+          <span class="num">01</span>
+          <div class="trial-status"><span class="blink"></span> Moving into first-in-human trials</div>
+          <h3>VenoShield</h3>
+          <p class="desc">Clinical trial plan (CT04) published. Phase I safety studies in healthy volunteers in preparation, followed by Phase II in snakebite patients in high-burden geography.</p>
+          <div class="specs">
+            <span>Timing<strong>Phase I ~Q2 2026, Phase II ~Q3 2026</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Epogres Syrup -->
+      <div class="slide">
+        <video class="img" src="uploads/main-sequence-4121e03f.webm" autoplay loop muted playsinline></video>
+        <div class="grad"></div>
+        <div class="copy">
+          <span class="num">02</span>
+          <div class="tag">Therapeutic area: Neurological • Schedule H prescription medicine.</div>
+          <h3>Epogres Syrup</h3>
+          <div class="specs">
+            <span>Form<strong>Suspension</strong></span>
+            <span>Schedule<strong>FSSAI</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Snake Venom Detection Kit -->
+      <div class="slide">
         <video class="img" src="uploads/r&d-sequence-2.webm" autoplay loop muted playsinline></video>
         <div class="grad"></div>
         <div class="copy">
+          <span class="num">03</span>
           <div class="tag">Diagnostic · Point-of-care</div>
-          <h3>Snake Venom Detection Kit (SVDK Kit)</h3>
+          <h3>Snake Venom Detection Kit</h3>
           <p class="desc">A 20-minute ELISA diagnostic that identifies venomous &amp; non-venomous bites accurate, timely treatment in remote settings.</p>
           <div class="specs">
             <span>Read time<strong>20 minutes</strong></span>
@@ -94,6 +126,18 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="product-tabs" aria-label="Product names"></div>
+
+    <div class="carousel-controls">
+      <button class="car-btn car-prev" aria-label="Previous product">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="carousel-dots" aria-label="Product navigation"></div>
+      <button class="car-btn car-next" aria-label="Next product">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
   </div>
 </section>

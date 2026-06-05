@@ -466,7 +466,7 @@ let carTimer = null;
 const PRODUCT_NAMES = [
   { name: 'Venoshield', icon: 'fa-solid fa-tablets' },
   { name: 'Epogres', icon: 'fa-solid fa-prescription-bottle' },
-  { name: 'Snake Venom Detection Kit (SVDK Kit)', icon: 'fa-solid fa-vial' },
+  { name: 'Snake Venom Detection Kit', icon: 'fa-solid fa-vial' },
 ];
 
 // Build product name tabs

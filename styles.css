@@ -454,7 +454,7 @@ section {
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
-  margin-bottom: 56px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 .hero-eyebrow-row .eyebrow { opacity: 0.85; }
@@ -526,7 +526,7 @@ section {
 
 /* lower row of meta */
 .hero-bottom {
-  margin-top: 56px;
+  margin-top: 16px;
   max-width: 640px;
 }
 .hero-bottom .lede {
@@ -1407,11 +1407,7 @@ section {
   color: var(--navy-900);
 }
 .cap-feat p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(18,18,18,0.65);
-  grid-column: 1 / -1;
-  margin: 0;
+  display: none;
 }
 
 .therapeutic-focus { margin-top: 8px; }
@@ -3350,7 +3346,7 @@ video.img {
    (using higher specificity to win over the reset above) */
 .products-page .products-hero { padding: 100px 6vw 40px; padding-right: 6vw; }
 .products-page .products-main { padding: 20px 6vw 8px !important; padding-right: 6vw !important; }
-.products-page .products-controls { padding: 8px 6vw 0 !important; padding-right: 6vw !important; }
+.products-page .products-controls { padding: 28px 6vw 48px !important; padding-right: 6vw !important; }
 .products-page .products-massive-page { padding: 24px 4vw 28px !important; padding-right: 4vw !important; }
 .products-page .footer { padding: 80px 6vw 32px; padding-right: 6vw; }
 
@@ -3805,13 +3801,15 @@ body.pmodal-open { overflow: hidden; }
 .pagination {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
+  row-gap: 12px;
 }
 .pag-num, .pag-arrow {
   width: 42px;
   height: 42px;
+  flex-shrink: 0;
   border-radius: 50%;
   border: 1.5px solid rgba(0,180,216,0.40);
   background: rgba(255,255,255,0.5);
@@ -4149,6 +4147,13 @@ body.pmodal-open { overflow: hidden; }
 }
 .press-page .press-hero {
   padding: 100px 6vw 48px;
+}
+/* Product Innovations carousel: match the homepage .products section box exactly
+   (the press-page reset above strips section padding/min-height) */
+.press-page .products {
+  min-height: 100vh;
+  padding: 120px 7vw 100px;
+  padding-right: max(7vw, var(--nav-clear));
 }
 .press-page .products-massive-page {
   padding: 56px 4vw 56px;
