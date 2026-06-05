@@ -124,77 +124,66 @@ document.addEventListener('click', e => {
 });
 
 // ----------------------------------------------------------
-// 2) Hero loop — Set A (rotator: cure / improve health / save lives)
-//    cycles through all three words, then Set B (snakebite antidote)
-//    appears for SET_B_MS, then loops back to Set A.
+// 2) Hero loop — Set A cycles through its full taglines (.hero-line),
+//    each held for LINE_MS, then Set B (snakebite antidote) appears
+//    for SET_B_MS, then it loops back to the first Set A tagline.
 // ----------------------------------------------------------
-const ROTATOR_WORDS = ['cure', 'improve health', 'save lives'];
-const WORD_MS  = 2600;  // each rotator word's hold time
+const LINE_MS  = 3600;   // each Set A tagline's hold time
 const SET_B_MS = 18000;  // how long Set B stays visible before looping
 
 function initRotator() {
-  const r    = document.querySelector('.hero-set-a .rotator');
   const setA = document.querySelector('.hero-set-a');
   const setB = document.querySelector('.hero-set-b');
-  if (!r) return;
+  if (!setA || !setB) return;
 
-  // Build the rotator's ghost sizer + animated word spans
-  const widest = ROTATOR_WORDS.reduce((a, b) => a.length > b.length ? a : b);
-  const ghost = document.createElement('span');
-  ghost.textContent = widest;
-  ghost.className = 'rotator-ghost';
-  ghost.setAttribute('aria-hidden', 'true');
-  r.appendChild(ghost);
+  const lines = Array.from(setA.querySelectorAll('.hero-line'));
+  const SLIDE = 'transform 0.9s cubic-bezier(.2,.7,.2,1), opacity 0.6s';
+  let idx = 0, prev = -1, timer;
 
-  const spans = ROTATOR_WORDS.map(w => {
-    const s = document.createElement('span');
-    s.textContent = w;
-    r.appendChild(s);
-    return s;
-  });
-
-  let idx = 0;
-  let prev = -1;
-  let timers = [];
-
-  const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
-
-  function render() {
-    spans.forEach((s, k) => {
+  // Conveyor slide: active line sits at rest, the outgoing line slides up
+  // and out, and every other line waits just below (snapped, no animation).
+  function renderLines() {
+    lines.forEach((l, k) => {
       if (k === idx) {
-        s.style.transition = 'transform 0.9s cubic-bezier(.2,.7,.2,1), opacity 0.6s';
-        s.style.transform = 'translateY(0)';
-        s.style.opacity = '1';
+        l.style.transition = SLIDE;
+        l.style.transform = 'translateY(0)';
+        l.style.opacity = '1';
+        l.classList.add('is-active');
       } else if (k === prev) {
-        s.style.transition = 'transform 0.9s cubic-bezier(.2,.7,.2,1), opacity 0.6s';
-        s.style.transform = 'translateY(-120%)';
-        s.style.opacity = '0';
+        l.style.transition = SLIDE;
+        l.style.transform = 'translateY(-100%)';
+        l.style.opacity = '0';
+        l.classList.remove('is-active');
       } else {
-        s.style.transition = 'none';
-        s.style.transform = 'translateY(120%)';
-        s.style.opacity = '0';
+        l.style.transition = 'none';
+        l.style.transform = 'translateY(100%)';
+        l.style.opacity = '0';
+        l.classList.remove('is-active');
       }
     });
   }
 
-  function step(p, n) { prev = p; idx = n; render(); }
-
   function showSetA() {
-    if (setB) setB.classList.remove('is-active');
-    if (setA) setA.classList.add('is-active');
-    clearTimers();
+    setB.classList.remove('is-active');
+    setA.classList.add('is-active');
     idx = 0; prev = -1;
-    render();
-    timers.push(setTimeout(() => step(0, 1), WORD_MS));        // → improve health
-    timers.push(setTimeout(() => step(1, 2), WORD_MS * 2));    // → save lives
-    timers.push(setTimeout(showSetB,         WORD_MS * 3));    // → Set B
+    renderLines();
+    timer = setTimeout(advance, LINE_MS);
+  }
+
+  function advance() {
+    if (idx >= lines.length - 1) { showSetB(); return; }
+    prev = idx; idx += 1;
+    renderLines();
+    clearTimeout(timer);
+    timer = setTimeout(advance, LINE_MS);
   }
 
   function showSetB() {
-    if (setA) setA.classList.remove('is-active');
-    if (setB) setB.classList.add('is-active');
-    clearTimers();
-    timers.push(setTimeout(showSetA, SET_B_MS));
+    setA.classList.remove('is-active');
+    setB.classList.add('is-active');
+    clearTimeout(timer);
+    timer = setTimeout(showSetA, SET_B_MS);
   }
 
   showSetA();
@@ -475,9 +464,9 @@ let carTimer = null;
 
 // Product names + icons for tabs
 const PRODUCT_NAMES = [
-  { name: 'ASV Tablet', icon: 'fa-solid fa-tablets' },
-  { name: 'Epregress Syrup', icon: 'fa-solid fa-prescription-bottle' },
-  { name: 'ASV Testing Kit', icon: 'fa-solid fa-vial' },
+  { name: 'Venoshield', icon: 'fa-solid fa-tablets' },
+  { name: 'Epogres', icon: 'fa-solid fa-prescription-bottle' },
+  { name: 'Snake Venom Detection Kit (SVDK Kit)', icon: 'fa-solid fa-vial' },
 ];
 
 // Build product name tabs
@@ -580,8 +569,8 @@ function initGlobe() {
     { name: 'Italy',          lat: 41.90,  lng: 12.49, size: 0.45 },
     { name: 'Netherlands',    lat: 52.37,  lng: 4.90,  size: 0.45 },
   ];
-  const flagCities = cities.filter(c => c.flag);
   const HQ = cities[0];
+  const flagCities = [HQ];   // only India (HQ) shows a flag pin; other countries connect by lines only
   const arcs = cities.slice(1).map(c => ({
     startLat: HQ.lat, startLng: HQ.lng,
     endLat: c.lat, endLng: c.lng,
@@ -599,7 +588,7 @@ function initGlobe() {
     .pointRadius(0.55)
     .pointColor(() => '#00B4D8')
     .pointResolution(12)
-    .labelsData(cities)
+    .labelsData([HQ])
     .labelText('name')
     .labelLat('lat')
     .labelLng('lng')

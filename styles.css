@@ -504,31 +504,24 @@ section {
 }
 .hero h1.display .pad-l { padding-left: 0.4em; }
 
-.hero .rotator {
-  display: inline-block;
-  position: relative;
-  vertical-align: baseline;
-  overflow: visible;
-  clip-path: inset(-5% 0 -10% 0);
+/* Full-tagline rotator — each .hero-line shares one grid cell and
+   cross-fades; the cell auto-sizes to the tallest line so swapping
+   never shifts the layout. */
+.hero h1.display.hero-rotate {
+  display: grid;
+  align-items: start;
 }
-.hero .rotator .rotator-ghost {
-  visibility: hidden;
-  display: inline-block;
-  font-weight: 700;
-  line-height: inherit;
-  white-space: nowrap;
-}
-.hero .rotator span:not(.rotator-ghost) {
-  position: absolute; left: 0; top: 0;
-  line-height: inherit;
-  font-weight: 700;
-  background: linear-gradient(120deg, var(--cyan-300) 0%, var(--cyan-500) 60%, var(--paper) 100%);
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
+.hero h1.display.hero-rotate .hero-line {
+  grid-area: 1 / 1;
   opacity: 0;
-  transform: translateY(120%);
-  white-space: nowrap;
+  transform: translateY(100%);
+  pointer-events: none;
   will-change: transform, opacity;
+}
+.hero h1.display.hero-rotate .hero-line.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* lower row of meta */
@@ -1388,6 +1381,11 @@ section {
   padding: 0 0 0 22px;
   border-left: 2px solid rgba(0,180,216,0.22);
   transition: border-color 0.35s, transform 0.35s cubic-bezier(.22,1,.36,1);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 10px;
 }
 .cap-feat:hover {
   border-left-color: var(--cyan-500);
@@ -1397,7 +1395,7 @@ section {
   display: inline-block;
   color: var(--cyan-500);
   font-size: 28px;
-  margin-bottom: 14px;
+  margin-bottom: 0;
   filter: drop-shadow(0 4px 12px rgba(0,180,216,0.3));
 }
 .cap-feat h4 {
@@ -1405,13 +1403,14 @@ section {
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.015em;
-  margin: 0 0 10px;
+  margin: 0;
   color: var(--navy-900);
 }
 .cap-feat p {
   font-size: 14px;
   line-height: 1.6;
   color: rgba(18,18,18,0.65);
+  grid-column: 1 / -1;
   margin: 0;
 }
 
@@ -1741,6 +1740,7 @@ section {
   background: rgba(255,255,255,0.08);
   border: 1.5px solid rgba(0,180,216,0.45);
   box-shadow: none;
+  text-decoration: none;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s, background 0.3s, color 0.3s, border-color 0.3s;
   display: inline-flex;
@@ -1762,6 +1762,10 @@ section {
 .product-tab i { font-size: 14px; color: var(--cyan-500); }
 .product-tab:hover i,
 .product-tab.is-active i { color: #fff; }
+
+/* Featured product buttons (products page) — anchor pills, wrap on narrow */
+.product-tabs-featured { flex-wrap: wrap; gap: 12px; }
+.product-tabs-featured .product-tab { text-decoration: none; }
 
 .carousel {
   max-width: 1500px;
@@ -1875,6 +1879,22 @@ video.img {
   margin-top: 4px;
 }
 
+/* Featured Product Innovation card — standalone (Products page + Product Innovations page).
+   Uses .feature-stage (NOT .product-stage) so the home carousel JS ignores it,
+   while reusing all the .slide / .copy visual styling. */
+.products-feature {
+  color: var(--paper);
+  background:
+    radial-gradient(60% 50% at 100% 100%, rgba(0,180,216,0.18), transparent 60%),
+    radial-gradient(40% 40% at 0% 0%, rgba(0,119,182,0.22), transparent 60%),
+    linear-gradient(180deg, #03045E 0%, #022b5e 50%, #03045E 100%);
+}
+.products-page .products-feature { padding: 64px 6vw; }
+.press-page .products-feature { padding: 56px 6vw; }
+.products-feature .products-head { display: block; max-width: 1500px; margin: 0 auto 28px; }
+.feature-stage { display: flex; min-height: 580px; }
+@media (max-width: 600px) { .feature-stage { min-height: 520px; } }
+
 /* Thumb column */
 .thumbs {
   display: flex;
@@ -1971,7 +1991,7 @@ video.img {
 .products-massive-text {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: clamp(31px, 7.2vw, 120px);
+  font-size: clamp(28px, 5.6vw, 104px);
   line-height: 0.9;
   letter-spacing: -0.05em;
   background: linear-gradient(180deg, rgba(0,180,216,0.32) 0%, rgba(2,62,138,0.0) 100%);
