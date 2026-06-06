@@ -97,7 +97,9 @@ navLinks.forEach(a => a.addEventListener('click', e => {
 $$('.nav-dropdown-trigger').forEach(trigger => {
   trigger.addEventListener('click', e => {
     const isMobile = window.matchMedia('(max-width: 820px)').matches;
-    if (trigger.tagName === 'A' && isMobile) return; // follow the href
+    // Desktop: let the News <a> navigate to its page (the dropdown opens on hover).
+    // Mobile: there's no hover, so tapping toggles the dropdown accordion instead.
+    if (trigger.tagName === 'A' && !isMobile) return; // follow the href on desktop
     e.stopPropagation();
     e.preventDefault();
     const dd = trigger.closest('.nav-dropdown');

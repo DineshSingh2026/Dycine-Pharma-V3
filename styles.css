@@ -2457,6 +2457,23 @@ video.img {
   justify-content: center;
 }
 
+/* Certifications sit under Categories; logo sits under Connect */
+.footer-grid-3col .footer-col-certs {
+  max-width: none;
+  margin: 36px 0 0;
+  padding-top: 0;
+  border-top: none;
+}
+.footer-grid-3col .footer-col-logo {
+  display: block;
+  width: 220px;
+  margin: 100px 0 0; /* drop the logo down to line up with the certification badges */
+}
+.footer-copyright-row {
+  max-width: 1500px;
+  margin: 28px auto 0;
+}
+
 /* Bottom row: certifications + copyright on left, logo on right */
 .footer-bottom-row {
   max-width: 1500px;
@@ -2510,6 +2527,8 @@ video.img {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
+  /* Columns stack/realign on mobile — no need for the desktop alignment offset */
+  .footer-grid-3col .footer-col-logo { margin-top: 28px; }
   .footer-bottom-row {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -2910,9 +2929,14 @@ video.img {
     padding: 8px 0 0;
     backdrop-filter: none;
     background: transparent;
-    display: flex;
+    display: none;            /* collapsed: take no space — no gap */
     flex-direction: column;
     gap: 8px;
+  }
+  /* Accordion: a dropdown's submenu only appears (and takes space) when tapped open */
+  .top-nav.is-open .nav-dropdown.is-open .nav-dropdown-menu,
+  .nav-links.is-teleported .nav-dropdown.is-open .nav-dropdown-menu {
+    display: flex;
   }
   .top-nav.is-open .nav-dropdown-item,
   .nav-links.is-teleported .nav-dropdown-item {
@@ -2922,16 +2946,7 @@ video.img {
     border-radius: 10px;
     background: rgba(0,180,216,0.06);
   }
-  /* News dropdown in mobile: hide the expanded menu + chevron — News
-     acts as a direct link to news-room.html instead */
-  .top-nav.is-open .news-dropdown .nav-dropdown-menu,
-  .nav-links.is-teleported .news-dropdown .nav-dropdown-menu {
-    display: none !important;
-  }
-  .top-nav.is-open .news-dropdown .nav-chevron,
-  .nav-links.is-teleported .news-dropdown .nav-chevron {
-    display: none !important;
-  }
+  /* News dropdown in mobile: show its submenu inline, same as Sign In. */
   /* Mobile: dark translucent gradient for readability — ABOVE the video */
   .hero::before {
     content: "";
@@ -3140,6 +3155,11 @@ video.img {
 }
 .careers-facility {
   margin: 28px 0 0;
+}
+/* Same facility image reused in the Certifications panel — medium, centered */
+.cert-facility {
+  max-width: 540px;
+  margin: 40px auto 0;
 }
 .careers-facility img {
   display: block;
@@ -4147,6 +4167,61 @@ body.pmodal-open { overflow: hidden; }
 }
 .press-page .press-hero {
   padding: 100px 6vw 48px;
+}
+/* Section switcher: Media & Events <-> Innovation Updates — matches .about-tab design */
+.news-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+.news-toggle a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  min-width: 200px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--navy-900);
+  background: rgba(255,255,255,0.5);
+  border: 1.5px solid rgba(0,180,216,0.40);
+  box-shadow: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s, background 0.3s, color 0.3s, border-color 0.3s;
+}
+.news-toggle a i { font-size: 14px; opacity: 1; color: var(--cyan-500); }
+.news-toggle a:hover {
+  color: #fff;
+  background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 100%);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,180,216,0.45);
+}
+.news-toggle a.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 100%);
+  border-color: transparent;
+  box-shadow: 0 12px 30px rgba(0,180,216,0.45), inset 0 0 0 2px rgba(255,255,255,0.18);
+}
+.news-toggle a:hover i,
+.news-toggle a.is-active i { color: #fff; opacity: 1; }
+/* Dark-background variant (Innovation Updates / carousel section) */
+.news-toggle.on-dark a {
+  color: var(--paper);
+  background: rgba(255,255,255,0.08);
+}
+.news-toggle.on-dark a:hover,
+.news-toggle.on-dark a.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 100%);
 }
 /* Product Innovations carousel: match the homepage .products section box exactly
    (the press-page reset above strips section padding/min-height) */
