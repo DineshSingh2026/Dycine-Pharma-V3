@@ -555,6 +555,15 @@ function setSlide(i) {
   slides.forEach((s, k) => s.classList.toggle('is-active', k === curIdx));
   dots.forEach((d, k) => d.classList.toggle('is-active', k === curIdx));
   tabs.forEach((t, k) => t.classList.toggle('is-active', k === curIdx));
+  // Play only the active slide's video; pause the rest. Mobile devices allow
+  // very few simultaneous hardware (H.264) decoders, so playing all slides at
+  // once leaves some blank — keeping one active fixes that.
+  slides.forEach((s, k) => {
+    const vid = s.querySelector('video');
+    if (!vid) return;
+    if (k === curIdx) { const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
+    else { vid.pause(); }
+  });
   const stg = $('.product-stage');
   if (stg) stg.style.transform = `translateX(-${curIdx * 100}%)`;
   // Keep the active tab in view inside the tabs row (mobile horizontal scroll only)
@@ -951,6 +960,11 @@ window.addEventListener('load', () => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       entry.target.querySelectorAll('video').forEach(v => {
+        // Don't auto-play videos inside an inactive carousel slide — only the
+        // active slide's video should run (mobile decoder limit). The carousel
+        // (setSlide) drives which slide video plays.
+        const slide = v.closest('.slide');
+        if (slide && !slide.classList.contains('is-active')) { v.pause(); return; }
         if (entry.isIntersecting) {
           if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
         } else if (!v.paused) {
