@@ -194,18 +194,19 @@ function initRotator() {
   const SLIDE = 'transform 0.9s cubic-bezier(.2,.7,.2,1), opacity 0.6s';
   let idx = 0, prev = -1, timer;
 
-  // Hero background video swaps with the headline set: molecule (A) / snake-bite (B).
-  const videoWrap = document.querySelector('.hero-video-wrap');
+  // Hero background swaps with the headline set: molecule (A, in its wrap) /
+  // snake-bite (B, a full-screen background layer that crossfades in).
+  const heroBgB = document.querySelector('.hero-bg-b');
   const vidA = document.querySelector('.hero-video-a');
-  const vidB = document.querySelector('.hero-video-b');
+  const vidB = document.querySelector('.hero-bg-b-video');
   const playVid = v => { if (v) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } };
   function showVideoA() {
-    if (videoWrap) videoWrap.classList.remove('show-b');
+    if (heroBgB) heroBgB.classList.remove('is-on');
     if (vidB) vidB.pause();
     playVid(vidA);
   }
   function showVideoB() {
-    if (videoWrap) videoWrap.classList.add('show-b');
+    if (heroBgB) heroBgB.classList.add('is-on');
     if (vidA) vidA.pause();
     playVid(vidB);
   }
