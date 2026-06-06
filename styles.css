@@ -1762,6 +1762,18 @@ section {
 /* Featured product buttons (products page) — anchor pills, wrap on narrow */
 .product-tabs-featured { flex-wrap: wrap; gap: 12px; }
 .product-tabs-featured .product-tab { text-decoration: none; }
+/* Featured product buttons: vertically centered within the blue band */
+.products-featured {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+.products-featured .product-tabs-featured { margin-top: 0; }
+/* Mobile: buttons stack, so give the band more height to keep them centered */
+@media (max-width: 768px) {
+  .products-featured { min-height: 320px; }
+}
 
 .carousel {
   max-width: 1500px;
@@ -1873,6 +1885,24 @@ video.img {
   text-transform: none;
   color: var(--paper);
   margin-top: 4px;
+}
+/* "Know More" CTA on each product slide — right side, vertically centered */
+.slide .slide-cta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+}
+@media (max-width: 768px) {
+  .slide .slide-cta {
+    position: static;
+    transform: none;
+    display: flex;
+    width: fit-content;
+    margin: 18px auto 0;
+    padding: 10px 20px;
+    font-size: 13px;
+  }
 }
 
 /* Featured Product Innovation card — standalone (Products page + Product Innovations page).
@@ -2029,8 +2059,9 @@ video.img {
 @media (max-width: 820px) {
   .products-massive { margin-top: 40px; padding: 0 4vw; }
   .products-massive-text {
-    font-size: clamp(22px, 8.5vw, 40px);
-    letter-spacing: -0.035em;
+    font-size: clamp(40px, 14vw, 72px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
@@ -2040,8 +2071,8 @@ video.img {
 }
 @media (max-width: 420px) {
   .products-massive-text {
-    font-size: clamp(20px, 8vw, 28px);
-    letter-spacing: -0.025em;
+    font-size: clamp(36px, 13.5vw, 56px);
+    letter-spacing: -0.03em;
   }
 }
 
@@ -2528,7 +2559,7 @@ video.img {
     gap: 32px;
   }
   /* Columns stack/realign on mobile — no need for the desktop alignment offset */
-  .footer-grid-3col .footer-col-logo { margin-top: 28px; }
+  .footer-grid-3col .footer-col-logo { margin: 28px auto 0; }
   .footer-bottom-row {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -3158,7 +3189,7 @@ video.img {
 }
 /* Same facility image reused in the Certifications panel — medium, centered */
 .cert-facility {
-  max-width: 540px;
+  max-width: 720px;
   margin: 40px auto 0;
 }
 .careers-facility img {
