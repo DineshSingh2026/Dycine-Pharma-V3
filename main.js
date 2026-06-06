@@ -135,7 +135,7 @@ document.addEventListener('click', e => {
 //     the .webm so the hero is never left without a video.
 // ----------------------------------------------------------
 (() => {
-  const v = document.querySelector('.hero-video');
+  const v = document.querySelector('.hero-video-a'); // the molecule video (Set A)
   if (!v) return; // hero video only exists on the home page
 
   const WEBM = 'assets/Dycine%20Molecule%20ProRes.webm';
@@ -194,6 +194,22 @@ function initRotator() {
   const SLIDE = 'transform 0.9s cubic-bezier(.2,.7,.2,1), opacity 0.6s';
   let idx = 0, prev = -1, timer;
 
+  // Hero background video swaps with the headline set: molecule (A) / snake-bite (B).
+  const videoWrap = document.querySelector('.hero-video-wrap');
+  const vidA = document.querySelector('.hero-video-a');
+  const vidB = document.querySelector('.hero-video-b');
+  const playVid = v => { if (v) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } };
+  function showVideoA() {
+    if (videoWrap) videoWrap.classList.remove('show-b');
+    if (vidB) vidB.pause();
+    playVid(vidA);
+  }
+  function showVideoB() {
+    if (videoWrap) videoWrap.classList.add('show-b');
+    if (vidA) vidA.pause();
+    playVid(vidB);
+  }
+
   // Conveyor slide: active line sits at rest, the outgoing line slides up
   // and out, and every other line waits just below (snapped, no animation).
   function renderLines() {
@@ -220,6 +236,7 @@ function initRotator() {
   function showSetA() {
     setB.classList.remove('is-active');
     setA.classList.add('is-active');
+    showVideoA();
     idx = 0; prev = -1;
     renderLines();
     timer = setTimeout(advance, LINE_MS);
@@ -236,6 +253,7 @@ function initRotator() {
   function showSetB() {
     setA.classList.remove('is-active');
     setB.classList.add('is-active');
+    showVideoB();
     clearTimeout(timer);
     timer = setTimeout(showSetA, SET_B_MS);
   }

@@ -99,12 +99,16 @@
     <div class="ring r2"></div>
     <!-- iOS/Safari load the transparent HEVC .mov first; everything else (and any
          load failure) falls back to the .webm. Selection + fallback handled in main.js. -->
-    <video class="hero-video"
+    <video class="hero-video hero-video-a"
            autoplay loop muted playsinline
            preload="auto">
       <source src="assets/Dycine%20Molecule%20hevc.mov" type='video/mp4; codecs="hvc1"' />
       <source src="assets/Dycine%20Molecule%20ProRes.webm" type="video/webm" />
     </video>
+    <!-- Shown only while Set B ("The World's First Life Saving Antidote") is active -->
+    <video class="hero-video hero-video-b"
+           src="assets/snake%20bite%20muscle.mp4"
+           autoplay loop muted playsinline preload="auto"></video>
   </div>
 
   <div class="hero-inner">
