@@ -3109,41 +3109,8 @@ video.img {
   .hero-video.hero-video-b { transform: none; }
   .hero-video-wrap .ring { display: none; }
   .products-head { flex-direction: column; align-items: flex-start; }
-  /* Mobile product card: fixed 16:9 video area at the top showing the ENTIRE video
-     (object-fit: contain) — never clipped; navy fills any aspect-ratio spacing.
-     The blue gradient overlays the video, and the text stacks below it. */
-  .product-stage { min-height: 0; align-items: flex-start; }
-  .slide { display: flex; flex-direction: column; position: relative; }
-  .slide .img,
-  .slide video.img,
-  .slide.is-active .img {
-    position: relative;
-    inset: auto;
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    background: #03045E;
-    transform: none;
-    animation: none;
-  }
-  .slide .grad {
-    display: block;
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: auto;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    z-index: 1;
-  }
-  .slide .copy {
-    position: relative;
-    inset: auto;
-    left: auto; right: auto; bottom: auto;
-    z-index: 2;
-    padding: 18px 24px 26px;
-  }
+  .product-stage { min-height: 560px; }
+  .slide .copy { bottom: 24px; left: 24px; right: 24px; }
   .slide .num { font-size: 34px; margin-bottom: 8px; }
   .slide h3 { font-size: clamp(22px, 5.5vw, 32px); margin-bottom: 12px; }
   .slide .desc { font-size: 14px; margin-bottom: 18px; }
