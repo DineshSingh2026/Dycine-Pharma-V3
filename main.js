@@ -126,6 +126,58 @@ document.addEventListener('click', e => {
 });
 
 // ----------------------------------------------------------
+// 1b) Hero background video source selection
+//     iOS/Safari support transparent HEVC (.mov, codecs=hvc1); all other
+//     browsers use the transparent VP9 .webm. The <source> order already
+//     lets the browser pick the right one (non-Safari can't decode hvc1 so
+//     it skips to the .webm). This adds a runtime fallback: if the .mov is
+//     selected but fails to load/decode — or nothing loads at all — force
+//     the .webm so the hero is never left without a video.
+// ----------------------------------------------------------
+(() => {
+  const v = document.querySelector('.hero-video');
+  if (!v) return; // hero video only exists on the home page
+
+  const WEBM = 'assets/Dycine%20Molecule%20ProRes.webm';
+  const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS 13+
+
+  const onWebm = () => (v.currentSrc || '').indexOf('ProRes.webm') !== -1;
+
+  function fallbackToWebm() {
+    if (v.dataset.webmFallback || onWebm()) return;
+    v.dataset.webmFallback = '1';
+    while (v.firstChild) v.removeChild(v.firstChild);   // drop the failed <source>s
+    v.removeAttribute('src');
+    const s = document.createElement('source');
+    s.src = WEBM;
+    s.type = 'video/webm';
+    v.appendChild(s);
+    v.load();
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+
+  // A <source> error doesn't bubble to the <video>, so listen on each source.
+  Array.prototype.forEach.call(v.getElementsByTagName('source'), s => {
+    s.addEventListener('error', () => {
+      if (/\.mov(\?|$)/i.test(s.src)) fallbackToWebm();
+    });
+  });
+  // Element-level media error (e.g. decode failure on the chosen source).
+  v.addEventListener('error', fallbackToWebm, true);
+
+  // Safety net: non-iOS should already be on the .webm via <source> order, but
+  // if after load the .mov was chosen and never became playable, swap to .webm.
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const stuckOnMov = !onWebm() && v.readyState < 2; // HAVE_CURRENT_DATA
+      if (stuckOnMov && (!isIOS || v.error)) fallbackToWebm();
+    }, 1800);
+  });
+})();
+
+// ----------------------------------------------------------
 // 2) Hero loop — Set A cycles through its full taglines (.hero-line),
 //    each held for LINE_MS, then Set B (snakebite antidote) appears
 //    for SET_B_MS, then it loops back to the first Set A tagline.
