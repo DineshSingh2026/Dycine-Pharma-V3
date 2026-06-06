@@ -2559,7 +2559,7 @@ video.img {
     gap: 32px;
   }
   /* Columns stack/realign on mobile — no need for the desktop alignment offset */
-  .footer-grid-3col .footer-col-logo { margin: 28px auto 0; }
+  .footer-grid-3col .footer-col-logo.flogo-wrap { display: block; margin: 28px auto 0; }
   .footer-bottom-row {
     grid-template-columns: 1fr;
     gap: 28px;
