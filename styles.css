@@ -2952,6 +2952,32 @@ video.img {
   .nav-links.is-teleported .nav-link:focus i,
   .nav-links.is-teleported .nav-link:active i,
   .nav-links.is-teleported .nav-link.is-active i { color: #ffffff !important; opacity: 1 !important; }
+  /* Products trigger could render white in the mobile menu — force it to match
+     the other items: dark text by default, blue gradient on tap / active. */
+  .nav-links.is-teleported .products-dropdown > .nav-link,
+  .top-nav.is-open .products-dropdown > .nav-link {
+    color: rgba(18,18,18,0.55) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .nav-links.is-teleported .products-dropdown > .nav-link:hover,
+  .nav-links.is-teleported .products-dropdown > .nav-link:focus,
+  .nav-links.is-teleported .products-dropdown > .nav-link:active,
+  .nav-links.is-teleported .products-dropdown > .nav-link.is-active,
+  .top-nav.is-open .products-dropdown > .nav-link:hover,
+  .top-nav.is-open .products-dropdown > .nav-link:focus,
+  .top-nav.is-open .products-dropdown > .nav-link:active,
+  .top-nav.is-open .products-dropdown > .nav-link.is-active {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--cyan-500) 0%, #0077B6 60%, #023E8A 100%) !important;
+    box-shadow: 0 10px 28px rgba(0,180,216,0.35) !important;
+  }
+  .nav-links.is-teleported .products-dropdown > .nav-link i,
+  .top-nav.is-open .products-dropdown > .nav-link i { color: rgba(0,180,216,0.65) !important; }
+  .nav-links.is-teleported .products-dropdown > .nav-link:hover i,
+  .nav-links.is-teleported .products-dropdown > .nav-link.is-active i,
+  .top-nav.is-open .products-dropdown > .nav-link:hover i,
+  .top-nav.is-open .products-dropdown > .nav-link.is-active i { color: #ffffff !important; }
   .top-nav.is-open .nav-dropdown-menu,
   .nav-links.is-teleported .nav-dropdown-menu {
     position: static;
@@ -3003,12 +3029,12 @@ video.img {
      but lede stays clear at the bottom. */
   .hero-video-wrap {
     position: absolute;
-    top: 320px;
+    top: 286px;
     right: 0;
     left: 0;
     width: 100%;
     max-width: none;
-    height: 320px;
+    height: 210px;
     opacity: 1;
     z-index: 2;
     pointer-events: none;
@@ -3020,9 +3046,9 @@ video.img {
   .hero-inner { z-index: 3; padding: 96px 0 48px; }
   .hero-meta-strip { z-index: 3; padding: 12px 0 16px; }
   .hero { min-height: auto; }
-  /* Video bottom = 320 + 320 = 640. heading_bottom min ~402.
-     margin-top: 280 → lede starts min 682, max 730. Always clears 640. */
-  .hero-bottom { margin-top: 280px; }
+  /* Video now 286 + 210 = 496 bottom. heading_bottom min ~362.
+     margin-top: 150 → lede starts ~512, clears the video while tightening the gap. */
+  .hero-bottom { margin-top: 150px; }
   .hero-video {
     position: static;
     top: auto; left: auto;
